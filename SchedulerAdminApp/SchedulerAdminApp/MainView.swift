@@ -28,6 +28,8 @@ struct MainView: View {
             RoomSDView().tabItem { Label("Rooms", systemImage: "key.fill") }.tag(TabsToChose.rooms)
             Text("Tu opcje").tabItem { Label("Settings", systemImage: "gear") }.tag(TabsToChose.options)
         })
+        .toolbar(.visible, for: .tabBar)
+
     }
 }
 

@@ -15,9 +15,16 @@ struct EditScheduleView: View {
     
     var body: some View {
         VStack{
-            Text(schedule.id.uuidString)
-          //  Spacer(minLength: 20)
-            ScheduleGroupsView(for: schedule.id)
+            
+            if schedule.isCyclic {
+                ScheduleGroupsView(for: schedule.id)
+            } else {
+                HStack {
+                    ScheduleGroupsView(for: schedule.id)
+                    MeetingsView(for: schedule.id)
+                }
+                
+            }
         }
         .toolbar{
             ToolbarItem(placement: .topBarLeading) {
@@ -52,6 +59,6 @@ struct EditScheduleView: View {
     
     NavigationStack {
         EditScheduleView(schedule: ScheduleModel(scheduleName: "Informatyka"))
-            .modelContainer(for: [ScheduleModel.self, GroupModel.self])
+            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self])
     }
 }
