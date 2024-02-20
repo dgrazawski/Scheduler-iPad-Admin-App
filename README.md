@@ -1,7 +1,7 @@
 # EngineerThesis
-iPad Admin app for my Engineer Thesis
-Admin App for making University Schedules which uses SwiftData as a local storage.
-Written in Swift, SwiftUI with SwiftData, Combine
+iPad Admin app for my Engineer Thesis\
+Admin App for making University Schedules which uses SwiftData as a local storage.\
+Written in Swift, SwiftUI with SwiftData, Combine\
 App will connect to my Flask Api and iOS client for students to display their plans
 
 Things done:\
