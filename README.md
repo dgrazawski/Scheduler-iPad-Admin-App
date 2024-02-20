@@ -11,13 +11,15 @@ Things done:\
 -Table Views for for Subjects, Lecturers and Rooms with Add and Edit Views\
 -View for Groups with Add and Edit option\
 -View for Event with Add and Edit option\
+-QR Code Generator for certain Schedule\
+-Save QR Code to device's gallery(need to fix minor bug)
 
 Things that will be added soon:\
 -Networking layer in Combine with JWT\
 -Login page\
 -Schedule Displaying Page\
 -Settings Page\
--Custom logic for cascade deleting data\
+-Custom logic for cascade deleting data
 
 
 
