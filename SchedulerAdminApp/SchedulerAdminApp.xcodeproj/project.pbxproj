@@ -1,0 +1,788 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DF0195FF2B2CAB9200E5DC3B /* AddRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */; };
+		DF1B70242B7FB1E800E8F278 /* EditGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B70232B7FB1E800E8F278 /* EditGroupView.swift */; };
+		DF1E28B42B797F2C0062D598 /* EditLecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E28B32B797F2C0062D598 /* EditLecturerView.swift */; };
+		DF1F533E2B6FAEB5000BF959 /* LecturerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1F533D2B6FAEB5000BF959 /* LecturerModel.swift */; };
+		DF2315E32B73DB3A005C915D /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2315E22B73DB3A005C915D /* EditRoomView.swift */; };
+		DF2FFAE12B4E1619005C3D89 /* AddScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FFAE02B4E1619005C3D89 /* AddScheduleView.swift */; };
+		DF2FFAE32B4F0464005C3D89 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FFAE22B4F0464005C3D89 /* MainView.swift */; };
+		DF368ECB2B6FC6FE0070E1E5 /* RoomSDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF368ECA2B6FC6FE0070E1E5 /* RoomSDView.swift */; };
+		DF368ECD2B6FD7050070E1E5 /* AddRoomSDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF368ECC2B6FD7050070E1E5 /* AddRoomSDView.swift */; };
+		DF3B6B0E2B49BBAE00F7BF65 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B0D2B49BBAE00F7BF65 /* SubjectView.swift */; };
+		DF3B6B102B49C84000F7BF65 /* AddSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B0F2B49C84000F7BF65 /* AddSubjectView.swift */; };
+		DF3B6B122B4A248400F7BF65 /* LecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B112B4A248400F7BF65 /* LecturerView.swift */; };
+		DF3B6B142B4A2B8800F7BF65 /* AddLecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */; };
+		DF3B6B162B4B445300F7BF65 /* ScheduleTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */; };
+		DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */; };
+		DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */; };
+		DF6864932B7E572B00EA0F91 /* GroupTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864922B7E572B00EA0F91 /* GroupTileView.swift */; };
+		DF8E8BC02B5D8B2F00B5DCC4 /* EditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E8BBF2B5D8B2F00B5DCC4 /* EditScheduleView.swift */; };
+		DF98FCFE2B8116D400B62710 /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FCFD2B8116D400B62710 /* QRCodeGeneratorService.swift */; };
+		DF98FD002B811A3C00B62710 /* GeneratedQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FCFF2B811A3C00B62710 /* GeneratedQRView.swift */; };
+		DF98FD022B812EFA00B62710 /* SaveImageToDeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FD012B812EFA00B62710 /* SaveImageToDeviceService.swift */; };
+		DF98FD042B81362F00B62710 /* ScreenshotExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FD032B81362F00B62710 /* ScreenshotExtension.swift */; };
+		DF98FD082B814FB100B62710 /* AllocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FD072B814FB100B62710 /* AllocationModel.swift */; };
+		DF98FD0B2B81536100B62710 /* AddAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FD0A2B81536100B62710 /* AddAllocationView.swift */; };
+		DFA65FD32B7BC8FC00A2FC5A /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA65FD22B7BC8FC00A2FC5A /* GroupModel.swift */; };
+		DFAB51EA2B826779009C3FD2 /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB51E92B826779009C3FD2 /* MeetingModel.swift */; };
+		DFC8E40D2B4C5DE80029681B /* ScheduleGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8E40C2B4C5DE80029681B /* ScheduleGridView.swift */; };
+		DFC8E4102B4C7D940029681B /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8E40F2B4C7D940029681B /* ScheduleModel.swift */; };
+		DFD72B7A2B6E7A7B00FEC849 /* StripToNumberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD72B792B6E7A7B00FEC849 /* StripToNumberService.swift */; };
+		DFD72B7C2B6E8C3600FEC849 /* SubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD72B7B2B6E8C3600FEC849 /* SubjectModel.swift */; };
+		DFDB01772B77ED4E00CF85AF /* EditSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB01762B77ED4E00CF85AF /* EditSubjectView.swift */; };
+		DFEA84552B4CAF2600D0234D /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEA84542B4CAF2600D0234D /* RoomModel.swift */; };
+		DFEBE8EF2B818350002AD18A /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEBE8EE2B818350002AD18A /* LaunchScreenView.swift */; };
+		DFF022D42AB2562A00AEBF7F /* SchedulerAdminAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022D32AB2562A00AEBF7F /* SchedulerAdminAppApp.swift */; };
+		DFF022D62AB2562A00AEBF7F /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022D52AB2562A00AEBF7F /* RoomView.swift */; };
+		DFF022D82AB2562C00AEBF7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF022D72AB2562C00AEBF7F /* Assets.xcassets */; };
+		DFF022DB2AB2562C00AEBF7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF022DA2AB2562C00AEBF7F /* Preview Assets.xcassets */; };
+		DFF022E52AB2562C00AEBF7F /* SchedulerAdminAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022E42AB2562C00AEBF7F /* SchedulerAdminAppTests.swift */; };
+		DFF022EF2AB2562C00AEBF7F /* SchedulerAdminAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022EE2AB2562C00AEBF7F /* SchedulerAdminAppUITests.swift */; };
+		DFF022F12AB2562C00AEBF7F /* SchedulerAdminAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022F02AB2562C00AEBF7F /* SchedulerAdminAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DFF022E12AB2562C00AEBF7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFF022C82AB2562A00AEBF7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFF022CF2AB2562A00AEBF7F;
+			remoteInfo = SchedulerAdminApp;
+		};
+		DFF022EB2AB2562C00AEBF7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFF022C82AB2562A00AEBF7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFF022CF2AB2562A00AEBF7F;
+			remoteInfo = SchedulerAdminApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomView.swift; sourceTree = "<group>"; };
+		DF1B70232B7FB1E800E8F278 /* EditGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupView.swift; sourceTree = "<group>"; };
+		DF1E28B32B797F2C0062D598 /* EditLecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLecturerView.swift; sourceTree = "<group>"; };
+		DF1F533D2B6FAEB5000BF959 /* LecturerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturerModel.swift; sourceTree = "<group>"; };
+		DF2315E22B73DB3A005C915D /* EditRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
+		DF2FFAE02B4E1619005C3D89 /* AddScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleView.swift; sourceTree = "<group>"; };
+		DF2FFAE22B4F0464005C3D89 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DF368ECA2B6FC6FE0070E1E5 /* RoomSDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSDView.swift; sourceTree = "<group>"; };
+		DF368ECC2B6FD7050070E1E5 /* AddRoomSDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomSDView.swift; sourceTree = "<group>"; };
+		DF3B6B0D2B49BBAE00F7BF65 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
+		DF3B6B0F2B49C84000F7BF65 /* AddSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectView.swift; sourceTree = "<group>"; };
+		DF3B6B112B4A248400F7BF65 /* LecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturerView.swift; sourceTree = "<group>"; };
+		DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLecturerView.swift; sourceTree = "<group>"; };
+		DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTileView.swift; sourceTree = "<group>"; };
+		DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGroupsView.swift; sourceTree = "<group>"; };
+		DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
+		DF6864922B7E572B00EA0F91 /* GroupTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTileView.swift; sourceTree = "<group>"; };
+		DF8E8BBF2B5D8B2F00B5DCC4 /* EditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleView.swift; sourceTree = "<group>"; };
+		DF98FCFD2B8116D400B62710 /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
+		DF98FCFF2B811A3C00B62710 /* GeneratedQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedQRView.swift; sourceTree = "<group>"; };
+		DF98FD012B812EFA00B62710 /* SaveImageToDeviceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageToDeviceService.swift; sourceTree = "<group>"; };
+		DF98FD032B81362F00B62710 /* ScreenshotExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotExtension.swift; sourceTree = "<group>"; };
+		DF98FD072B814FB100B62710 /* AllocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationModel.swift; sourceTree = "<group>"; };
+		DF98FD0A2B81536100B62710 /* AddAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllocationView.swift; sourceTree = "<group>"; };
+		DFA65FD22B7BC8FC00A2FC5A /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		DFAB51E92B826779009C3FD2 /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
+		DFC8E40C2B4C5DE80029681B /* ScheduleGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGridView.swift; sourceTree = "<group>"; };
+		DFC8E40F2B4C7D940029681B /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		DFD72B792B6E7A7B00FEC849 /* StripToNumberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripToNumberService.swift; sourceTree = "<group>"; };
+		DFD72B7B2B6E8C3600FEC849 /* SubjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectModel.swift; sourceTree = "<group>"; };
+		DFDB01762B77ED4E00CF85AF /* EditSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubjectView.swift; sourceTree = "<group>"; };
+		DFEA84542B4CAF2600D0234D /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		DFEBE8EE2B818350002AD18A /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		DFF022D02AB2562A00AEBF7F /* SchedulerAdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchedulerAdminApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF022D32AB2562A00AEBF7F /* SchedulerAdminAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAdminAppApp.swift; sourceTree = "<group>"; };
+		DFF022D52AB2562A00AEBF7F /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
+		DFF022D72AB2562C00AEBF7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFF022DA2AB2562C00AEBF7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DFF022E02AB2562C00AEBF7F /* SchedulerAdminAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchedulerAdminAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF022E42AB2562C00AEBF7F /* SchedulerAdminAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAdminAppTests.swift; sourceTree = "<group>"; };
+		DFF022EA2AB2562C00AEBF7F /* SchedulerAdminAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchedulerAdminAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF022EE2AB2562C00AEBF7F /* SchedulerAdminAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAdminAppUITests.swift; sourceTree = "<group>"; };
+		DFF022F02AB2562C00AEBF7F /* SchedulerAdminAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAdminAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DFF022CD2AB2562A00AEBF7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022DD2AB2562C00AEBF7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022E72AB2562C00AEBF7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF1C23DA2B7A6CFD00585023 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				DF2315E22B73DB3A005C915D /* EditRoomView.swift */,
+				DFF022D52AB2562A00AEBF7F /* RoomView.swift */,
+				DF368ECA2B6FC6FE0070E1E5 /* RoomSDView.swift */,
+				DF368ECC2B6FD7050070E1E5 /* AddRoomSDView.swift */,
+				DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */,
+			);
+			path = Room;
+			sourceTree = "<group>";
+		};
+		DF1C23DB2B7A6D3600585023 /* Lecturer */ = {
+			isa = PBXGroup;
+			children = (
+				DF3B6B112B4A248400F7BF65 /* LecturerView.swift */,
+				DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */,
+				DF1E28B32B797F2C0062D598 /* EditLecturerView.swift */,
+			);
+			path = Lecturer;
+			sourceTree = "<group>";
+		};
+		DF1C23DC2B7A6D6100585023 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				DFDB01762B77ED4E00CF85AF /* EditSubjectView.swift */,
+				DF3B6B0D2B49BBAE00F7BF65 /* SubjectView.swift */,
+				DF3B6B0F2B49C84000F7BF65 /* AddSubjectView.swift */,
+			);
+			path = Subject;
+			sourceTree = "<group>";
+		};
+		DF1C23DD2B7A6E3600585023 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				DF98FD092B81534400B62710 /* Allocation */,
+				DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */,
+				DFC8E40C2B4C5DE80029681B /* ScheduleGridView.swift */,
+				DF8E8BBF2B5D8B2F00B5DCC4 /* EditScheduleView.swift */,
+				DF2FFAE02B4E1619005C3D89 /* AddScheduleView.swift */,
+				DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */,
+				DF6864922B7E572B00EA0F91 /* GroupTileView.swift */,
+				DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */,
+				DF1B70232B7FB1E800E8F278 /* EditGroupView.swift */,
+				DF98FCFF2B811A3C00B62710 /* GeneratedQRView.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		DF1E28B52B7982770062D598 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF1C23DD2B7A6E3600585023 /* Schedule */,
+				DF1C23DC2B7A6D6100585023 /* Subject */,
+				DF1C23DB2B7A6D3600585023 /* Lecturer */,
+				DF1C23DA2B7A6CFD00585023 /* Room */,
+				DFEBE8EE2B818350002AD18A /* LaunchScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF98FD092B81534400B62710 /* Allocation */ = {
+			isa = PBXGroup;
+			children = (
+				DF98FD0A2B81536100B62710 /* AddAllocationView.swift */,
+			);
+			path = Allocation;
+			sourceTree = "<group>";
+		};
+		DFC8E40E2B4C7D6F0029681B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFEA84542B4CAF2600D0234D /* RoomModel.swift */,
+				DFC8E40F2B4C7D940029681B /* ScheduleModel.swift */,
+				DFD72B7B2B6E8C3600FEC849 /* SubjectModel.swift */,
+				DF1F533D2B6FAEB5000BF959 /* LecturerModel.swift */,
+				DFA65FD22B7BC8FC00A2FC5A /* GroupModel.swift */,
+				DF98FD072B814FB100B62710 /* AllocationModel.swift */,
+				DFAB51E92B826779009C3FD2 /* MeetingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFD72B782B6E7A4900FEC849 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFD72B792B6E7A7B00FEC849 /* StripToNumberService.swift */,
+				DF98FCFD2B8116D400B62710 /* QRCodeGeneratorService.swift */,
+				DF98FD012B812EFA00B62710 /* SaveImageToDeviceService.swift */,
+				DF98FD032B81362F00B62710 /* ScreenshotExtension.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DFF022C72AB2562A00AEBF7F = {
+			isa = PBXGroup;
+			children = (
+				DFF022D22AB2562A00AEBF7F /* SchedulerAdminApp */,
+				DFF022E32AB2562C00AEBF7F /* SchedulerAdminAppTests */,
+				DFF022ED2AB2562C00AEBF7F /* SchedulerAdminAppUITests */,
+				DFF022D12AB2562A00AEBF7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DFF022D12AB2562A00AEBF7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFF022D02AB2562A00AEBF7F /* SchedulerAdminApp.app */,
+				DFF022E02AB2562C00AEBF7F /* SchedulerAdminAppTests.xctest */,
+				DFF022EA2AB2562C00AEBF7F /* SchedulerAdminAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFF022D22AB2562A00AEBF7F /* SchedulerAdminApp */ = {
+			isa = PBXGroup;
+			children = (
+				DF1E28B52B7982770062D598 /* Views */,
+				DFD72B782B6E7A4900FEC849 /* Services */,
+				DFC8E40E2B4C7D6F0029681B /* Models */,
+				DFF022D32AB2562A00AEBF7F /* SchedulerAdminAppApp.swift */,
+				DF2FFAE22B4F0464005C3D89 /* MainView.swift */,
+				DFF022D72AB2562C00AEBF7F /* Assets.xcassets */,
+				DFF022D92AB2562C00AEBF7F /* Preview Content */,
+			);
+			path = SchedulerAdminApp;
+			sourceTree = "<group>";
+		};
+		DFF022D92AB2562C00AEBF7F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DFF022DA2AB2562C00AEBF7F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DFF022E32AB2562C00AEBF7F /* SchedulerAdminAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				DFF022E42AB2562C00AEBF7F /* SchedulerAdminAppTests.swift */,
+			);
+			path = SchedulerAdminAppTests;
+			sourceTree = "<group>";
+		};
+		DFF022ED2AB2562C00AEBF7F /* SchedulerAdminAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DFF022EE2AB2562C00AEBF7F /* SchedulerAdminAppUITests.swift */,
+				DFF022F02AB2562C00AEBF7F /* SchedulerAdminAppUITestsLaunchTests.swift */,
+			);
+			path = SchedulerAdminAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DFF022CF2AB2562A00AEBF7F /* SchedulerAdminApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFF022F42AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminApp" */;
+			buildPhases = (
+				DFF022CC2AB2562A00AEBF7F /* Sources */,
+				DFF022CD2AB2562A00AEBF7F /* Frameworks */,
+				DFF022CE2AB2562A00AEBF7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SchedulerAdminApp;
+			productName = SchedulerAdminApp;
+			productReference = DFF022D02AB2562A00AEBF7F /* SchedulerAdminApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DFF022DF2AB2562C00AEBF7F /* SchedulerAdminAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFF022F72AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminAppTests" */;
+			buildPhases = (
+				DFF022DC2AB2562C00AEBF7F /* Sources */,
+				DFF022DD2AB2562C00AEBF7F /* Frameworks */,
+				DFF022DE2AB2562C00AEBF7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFF022E22AB2562C00AEBF7F /* PBXTargetDependency */,
+			);
+			name = SchedulerAdminAppTests;
+			productName = SchedulerAdminAppTests;
+			productReference = DFF022E02AB2562C00AEBF7F /* SchedulerAdminAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DFF022E92AB2562C00AEBF7F /* SchedulerAdminAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFF022FA2AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminAppUITests" */;
+			buildPhases = (
+				DFF022E62AB2562C00AEBF7F /* Sources */,
+				DFF022E72AB2562C00AEBF7F /* Frameworks */,
+				DFF022E82AB2562C00AEBF7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFF022EC2AB2562C00AEBF7F /* PBXTargetDependency */,
+			);
+			name = SchedulerAdminAppUITests;
+			productName = SchedulerAdminAppUITests;
+			productReference = DFF022EA2AB2562C00AEBF7F /* SchedulerAdminAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DFF022C82AB2562A00AEBF7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					DFF022CF2AB2562A00AEBF7F = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					DFF022DF2AB2562C00AEBF7F = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = DFF022CF2AB2562A00AEBF7F;
+					};
+					DFF022E92AB2562C00AEBF7F = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = DFF022CF2AB2562A00AEBF7F;
+					};
+				};
+			};
+			buildConfigurationList = DFF022CB2AB2562A00AEBF7F /* Build configuration list for PBXProject "SchedulerAdminApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DFF022C72AB2562A00AEBF7F;
+			productRefGroup = DFF022D12AB2562A00AEBF7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DFF022CF2AB2562A00AEBF7F /* SchedulerAdminApp */,
+				DFF022DF2AB2562C00AEBF7F /* SchedulerAdminAppTests */,
+				DFF022E92AB2562C00AEBF7F /* SchedulerAdminAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DFF022CE2AB2562A00AEBF7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF022DB2AB2562C00AEBF7F /* Preview Assets.xcassets in Resources */,
+				DFF022D82AB2562C00AEBF7F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022DE2AB2562C00AEBF7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022E82AB2562C00AEBF7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DFF022CC2AB2562A00AEBF7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFD72B7A2B6E7A7B00FEC849 /* StripToNumberService.swift in Sources */,
+				DF3B6B142B4A2B8800F7BF65 /* AddLecturerView.swift in Sources */,
+				DF2FFAE32B4F0464005C3D89 /* MainView.swift in Sources */,
+				DFC8E40D2B4C5DE80029681B /* ScheduleGridView.swift in Sources */,
+				DF8E8BC02B5D8B2F00B5DCC4 /* EditScheduleView.swift in Sources */,
+				DFC8E4102B4C7D940029681B /* ScheduleModel.swift in Sources */,
+				DF368ECB2B6FC6FE0070E1E5 /* RoomSDView.swift in Sources */,
+				DF98FD082B814FB100B62710 /* AllocationModel.swift in Sources */,
+				DFF022D62AB2562A00AEBF7F /* RoomView.swift in Sources */,
+				DF1E28B42B797F2C0062D598 /* EditLecturerView.swift in Sources */,
+				DF98FCFE2B8116D400B62710 /* QRCodeGeneratorService.swift in Sources */,
+				DFA65FD32B7BC8FC00A2FC5A /* GroupModel.swift in Sources */,
+				DF2315E32B73DB3A005C915D /* EditRoomView.swift in Sources */,
+				DF368ECD2B6FD7050070E1E5 /* AddRoomSDView.swift in Sources */,
+				DF1B70242B7FB1E800E8F278 /* EditGroupView.swift in Sources */,
+				DF6864932B7E572B00EA0F91 /* GroupTileView.swift in Sources */,
+				DF98FD022B812EFA00B62710 /* SaveImageToDeviceService.swift in Sources */,
+				DFF022D42AB2562A00AEBF7F /* SchedulerAdminAppApp.swift in Sources */,
+				DF2FFAE12B4E1619005C3D89 /* AddScheduleView.swift in Sources */,
+				DF1F533E2B6FAEB5000BF959 /* LecturerModel.swift in Sources */,
+				DFEA84552B4CAF2600D0234D /* RoomModel.swift in Sources */,
+				DFEBE8EF2B818350002AD18A /* LaunchScreenView.swift in Sources */,
+				DF98FD0B2B81536100B62710 /* AddAllocationView.swift in Sources */,
+				DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */,
+				DF3B6B122B4A248400F7BF65 /* LecturerView.swift in Sources */,
+				DF98FD002B811A3C00B62710 /* GeneratedQRView.swift in Sources */,
+				DF3B6B102B49C84000F7BF65 /* AddSubjectView.swift in Sources */,
+				DF98FD042B81362F00B62710 /* ScreenshotExtension.swift in Sources */,
+				DFDB01772B77ED4E00CF85AF /* EditSubjectView.swift in Sources */,
+				DFAB51EA2B826779009C3FD2 /* MeetingModel.swift in Sources */,
+				DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */,
+				DF0195FF2B2CAB9200E5DC3B /* AddRoomView.swift in Sources */,
+				DF3B6B0E2B49BBAE00F7BF65 /* SubjectView.swift in Sources */,
+				DFD72B7C2B6E8C3600FEC849 /* SubjectModel.swift in Sources */,
+				DF3B6B162B4B445300F7BF65 /* ScheduleTileView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022DC2AB2562C00AEBF7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF022E52AB2562C00AEBF7F /* SchedulerAdminAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFF022E62AB2562C00AEBF7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF022F12AB2562C00AEBF7F /* SchedulerAdminAppUITestsLaunchTests.swift in Sources */,
+				DFF022EF2AB2562C00AEBF7F /* SchedulerAdminAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DFF022E22AB2562C00AEBF7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFF022CF2AB2562A00AEBF7F /* SchedulerAdminApp */;
+			targetProxy = DFF022E12AB2562C00AEBF7F /* PBXContainerItemProxy */;
+		};
+		DFF022EC2AB2562C00AEBF7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFF022CF2AB2562A00AEBF7F /* SchedulerAdminApp */;
+			targetProxy = DFF022EB2AB2562C00AEBF7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DFF022F22AB2562C00AEBF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DFF022F32AB2562C00AEBF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DFF022F52AB2562C00AEBF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SchedulerAdminApp/Preview Content\"";
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saving QR Code";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DFF022F62AB2562C00AEBF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SchedulerAdminApp/Preview Content\"";
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Saving QR Code";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DFF022F82AB2562C00AEBF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SchedulerAdminApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SchedulerAdminApp";
+			};
+			name = Debug;
+		};
+		DFF022F92AB2562C00AEBF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SchedulerAdminApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SchedulerAdminApp";
+			};
+			name = Release;
+		};
+		DFF022FB2AB2562C00AEBF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SchedulerAdminApp;
+			};
+			name = Debug;
+		};
+		DFF022FC2AB2562C00AEBF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V57Q3RT4P5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dawidgrazawski.SchedulerAdminAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SchedulerAdminApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DFF022CB2AB2562A00AEBF7F /* Build configuration list for PBXProject "SchedulerAdminApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFF022F22AB2562C00AEBF7F /* Debug */,
+				DFF022F32AB2562C00AEBF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFF022F42AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFF022F52AB2562C00AEBF7F /* Debug */,
+				DFF022F62AB2562C00AEBF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFF022F72AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFF022F82AB2562C00AEBF7F /* Debug */,
+				DFF022F92AB2562C00AEBF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFF022FA2AB2562C00AEBF7F /* Build configuration list for PBXNativeTarget "SchedulerAdminAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFF022FB2AB2562C00AEBF7F /* Debug */,
+				DFF022FC2AB2562C00AEBF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DFF022C82AB2562A00AEBF7F /* Project object */;
+}
