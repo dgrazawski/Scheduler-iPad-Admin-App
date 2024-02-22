@@ -24,10 +24,12 @@
 		DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */; };
 		DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */; };
 		DF6864932B7E572B00EA0F91 /* GroupTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864922B7E572B00EA0F91 /* GroupTileView.swift */; };
+		DF6AB0962B86772100A5FF5C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AB0952B86772100A5FF5C /* SettingsView.swift */; };
 		DF8818312B850CA80097813F /* MeetingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8818302B850CA80097813F /* MeetingsView.swift */; };
 		DF8818332B8510760097813F /* MeetingTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8818322B8510760097813F /* MeetingTileView.swift */; };
 		DF8818352B85162B0097813F /* AddMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8818342B85162B0097813F /* AddMeetingView.swift */; };
 		DF8818382B851FD60097813F /* EditMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8818372B851FD60097813F /* EditMeetingView.swift */; };
+		DF88183A2B8621130097813F /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8818392B8621130097813F /* LoginPageView.swift */; };
 		DF8E8BC02B5D8B2F00B5DCC4 /* EditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E8BBF2B5D8B2F00B5DCC4 /* EditScheduleView.swift */; };
 		DF98FCFE2B8116D400B62710 /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FCFD2B8116D400B62710 /* QRCodeGeneratorService.swift */; };
 		DF98FD002B811A3C00B62710 /* GeneratedQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF98FCFF2B811A3C00B62710 /* GeneratedQRView.swift */; };
@@ -88,10 +90,12 @@
 		DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGroupsView.swift; sourceTree = "<group>"; };
 		DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		DF6864922B7E572B00EA0F91 /* GroupTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTileView.swift; sourceTree = "<group>"; };
+		DF6AB0952B86772100A5FF5C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DF8818302B850CA80097813F /* MeetingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingsView.swift; sourceTree = "<group>"; };
 		DF8818322B8510760097813F /* MeetingTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTileView.swift; sourceTree = "<group>"; };
 		DF8818342B85162B0097813F /* AddMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeetingView.swift; sourceTree = "<group>"; };
 		DF8818372B851FD60097813F /* EditMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMeetingView.swift; sourceTree = "<group>"; };
+		DF8818392B8621130097813F /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		DF8E8BBF2B5D8B2F00B5DCC4 /* EditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleView.swift; sourceTree = "<group>"; };
 		DF98FCFD2B8116D400B62710 /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
 		DF98FCFF2B811A3C00B62710 /* GeneratedQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedQRView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				DF1C23DB2B7A6D3600585023 /* Lecturer */,
 				DF1C23DA2B7A6CFD00585023 /* Room */,
 				DFEBE8EE2B818350002AD18A /* LaunchScreenView.swift */,
+				DF8818392B8621130097813F /* LoginPageView.swift */,
+				DF6AB0952B86772100A5FF5C /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				DF2FFAE32B4F0464005C3D89 /* MainView.swift in Sources */,
 				DFC8E40D2B4C5DE80029681B /* ScheduleGridView.swift in Sources */,
 				DF8E8BC02B5D8B2F00B5DCC4 /* EditScheduleView.swift in Sources */,
+				DF6AB0962B86772100A5FF5C /* SettingsView.swift in Sources */,
 				DFC8E4102B4C7D940029681B /* ScheduleModel.swift in Sources */,
 				DF368ECB2B6FC6FE0070E1E5 /* RoomSDView.swift in Sources */,
 				DF8818332B8510760097813F /* MeetingTileView.swift in Sources */,
@@ -471,6 +478,7 @@
 				DF2FFAE12B4E1619005C3D89 /* AddScheduleView.swift in Sources */,
 				DF1F533E2B6FAEB5000BF959 /* LecturerModel.swift in Sources */,
 				DFEA84552B4CAF2600D0234D /* RoomModel.swift in Sources */,
+				DF88183A2B8621130097813F /* LoginPageView.swift in Sources */,
 				DFEBE8EF2B818350002AD18A /* LaunchScreenView.swift in Sources */,
 				DF98FD0B2B81536100B62710 /* AddAllocationView.swift in Sources */,
 				DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */,

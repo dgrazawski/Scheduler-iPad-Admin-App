@@ -10,8 +10,11 @@ import SwiftData
 
 @main
 struct SchedulerAdminAppApp: App {
+    @AppStorage("login") private var login: String = "admin"
+    @AppStorage("password") private var password: String = "admin"
     @Environment(\.modelContext) var context
-    @State private var showSplash = true
+    @State private var showSplash: Bool = true
+    @State private var loggedIn: Bool = false
     let modelContainer: ModelContainer
       init() {
         do {
@@ -24,8 +27,12 @@ struct SchedulerAdminAppApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                MainView()
-                    .modelContainer(modelContainer)
+                if !loggedIn {
+                    LoginPageView(loggedIn: $loggedIn, savedPass: $login, savedLog: $password)
+                } else {
+                    MainView(logBool: $loggedIn)
+                        .modelContainer(modelContainer)
+                }
                 if showSplash {
                     LaunchScreenView(showSplash: $showSplash)
                         .transition(.move(edge: .bottom))

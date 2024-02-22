@@ -18,6 +18,7 @@ struct MainView: View {
         
     }
     @State private var chosenTab: TabsToChose = .schedules
+    @Binding var logBool: Bool
     
     var body: some View {
         TabView(selection: $chosenTab,
@@ -26,7 +27,7 @@ struct MainView: View {
             LecturerView().tabItem { Label("Lecturers", systemImage: "person.2.fill") }.tag(TabsToChose.lecturers)
             SubjectView().tabItem { Label("Subjects", systemImage: "books.vertical.fill") }.tag(TabsToChose.subjects)
             RoomSDView().tabItem { Label("Rooms", systemImage: "key.fill") }.tag(TabsToChose.rooms)
-            Text("Tu opcje").tabItem { Label("Settings", systemImage: "gear") }.tag(TabsToChose.options)
+            SettingsView(isLogged: $logBool).tabItem { Label("Settings", systemImage: "gear") }.tag(TabsToChose.options)
         })
         .toolbar(.visible, for: .tabBar)
 
@@ -34,6 +35,6 @@ struct MainView: View {
 }
 
 #Preview(traits: .landscapeLeft) {
-    MainView()
+    MainView(logBool: .constant(true))
         .modelContainer(for: ScheduleModel.self)
 }
