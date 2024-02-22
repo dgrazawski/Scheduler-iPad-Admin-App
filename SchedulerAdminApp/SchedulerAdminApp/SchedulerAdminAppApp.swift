@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct SchedulerAdminAppApp: App {
+    @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @AppStorage("login") private var login: String = "admin"
     @AppStorage("password") private var password: String = "admin"
     @Environment(\.modelContext) var context
@@ -32,6 +33,7 @@ struct SchedulerAdminAppApp: App {
                 } else {
                     MainView(logBool: $loggedIn)
                         .modelContainer(modelContainer)
+                        .preferredColorScheme(isDarkEnabled ? .dark : .light)
                 }
                 if showSplash {
                     LaunchScreenView(showSplash: $showSplash)

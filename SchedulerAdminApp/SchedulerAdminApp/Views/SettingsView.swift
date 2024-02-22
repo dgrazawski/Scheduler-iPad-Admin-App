@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @Binding var isLogged: Bool
     @State private var oldPassword: String = ""
     @State private var newPassword: String = ""
@@ -28,7 +29,7 @@ struct SettingsView: View {
                         .buttonStyle(.borderedProminent)
                 }
                 
-                Toggle("Dark mode", isOn: $isDark)
+                Toggle("Dark mode", isOn: $isDarkEnabled)
                 
             }
             .navigationTitle("Settings")
