@@ -13,12 +13,13 @@ Things done:\
 -View for Event with Add and Edit option\
 -QR Code Generator for certain Schedule\
 -Save QR Code to device's gallery(need to fix minor bug)
+-Login page (dummy right now just with admin/admin for display purposes, till the networking done)\
+-Basic settings screen with darkmode toggle, change password(dummy rn) and logout button\
+-Light/dark mode
 
 Things that will be added soon:\
 -Networking layer in Combine with JWT\
--Login page\
 -Schedule Displaying Page\
--Settings Page\
 -Custom logic for cascade deleting data
 
 
