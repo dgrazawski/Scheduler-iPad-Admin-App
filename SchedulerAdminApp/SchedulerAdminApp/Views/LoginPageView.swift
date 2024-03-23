@@ -11,8 +11,8 @@ struct LoginPageView: View {
     @Binding var loggedIn: Bool
     @Binding var savedPass: String
     @Binding var savedLog: String
-    @State private var login: String = ""
-    @State private var password: String = ""
+    @State private var login: String = "admin"
+    @State private var password: String = "admin"
     @State private var wrongAlert: Bool = false
     private var buttonStatus: Bool {
         if login.count < 4 || password.count < 4 {

@@ -33,6 +33,22 @@ final class GroupModel: Identifiable {
         
         var id: Int {rawValue}
         
+        var stringValue: String {
+            switch(self){
+                
+            case .lecture:
+                return "Lecture"
+            case .exercise:
+                return "Exercise"
+            case .laboratories:
+               return "Laboratories"
+            case .seminary:
+                return "Seminary"
+            case .special:
+                return "Special"
+            }
+        }
+        
         var localizedName: LocalizedStringKey{
             switch(self){
                 
@@ -42,6 +58,8 @@ final class GroupModel: Identifiable {
                 return "Exercise"
             case .laboratories:
                return "Laboratories"
+            case .seminary:
+                return "Seminary"
             case .special:
                 return "Special"
             }
@@ -50,6 +68,7 @@ final class GroupModel: Identifiable {
         case lecture = 1
         case exercise
         case laboratories
+        case seminary
         case special
         
         

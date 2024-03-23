@@ -13,14 +13,7 @@ struct MeetingsView: View {
     @State private var showCreate = false
     @State private var showEdit = false
     @State private var meetingToEdit: MeetingModel?
-    var scheduleID: UUID
-    @Query private var meetings: [MeetingModel]
-    init(for scheduleID: UUID) {
-        self._meetings = Query(filter: #Predicate{
-            $0.scheduleID == scheduleID
-        }, sort: [SortDescriptor(\MeetingModel.startDate)])
-        self.scheduleID = scheduleID
-    }
+    @Query(sort: \MeetingModel.startDate) private var meetings: [MeetingModel]
     var body: some View {
         VStack{
             HStack{
@@ -62,7 +55,7 @@ struct MeetingsView: View {
             }
         }
         .sheet(isPresented: $showCreate, content: {
-            AddMeetingView(scheduleID: scheduleID)
+            AddMeetingView()
         })
         .sheet(item: $meetingToEdit) {
                         meetingToEdit = nil
@@ -73,6 +66,6 @@ struct MeetingsView: View {
 }
 
 #Preview {
-    MeetingsView(for: UUID(uuidString: "77e417cf-d6a4-4358-994a-885841361ad4")!)
+    MeetingsView()
         .modelContainer(for: MeetingModel.self)
 }

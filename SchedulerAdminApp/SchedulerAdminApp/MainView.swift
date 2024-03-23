@@ -14,7 +14,8 @@ struct MainView: View {
         case lecturers = 2
         case subjects = 3
         case rooms = 4
-        case options = 5
+        case meetings = 5
+        case options = 6
         
     }
     @State private var chosenTab: TabsToChose = .schedules
@@ -27,6 +28,7 @@ struct MainView: View {
             LecturerView().tabItem { Label("Lecturers", systemImage: "person.2.fill") }.tag(TabsToChose.lecturers)
             SubjectView().tabItem { Label("Subjects", systemImage: "books.vertical.fill") }.tag(TabsToChose.subjects)
             RoomSDView().tabItem { Label("Rooms", systemImage: "key.fill") }.tag(TabsToChose.rooms)
+            MeetingsView().tabItem { Label("Meetings", systemImage: "calendar.badge.clock")}.tag(TabsToChose.meetings)
             SettingsView(isLogged: $logBool).tabItem { Label("Settings", systemImage: "gear") }.tag(TabsToChose.options)
         })
         .toolbar(.visible, for: .tabBar)

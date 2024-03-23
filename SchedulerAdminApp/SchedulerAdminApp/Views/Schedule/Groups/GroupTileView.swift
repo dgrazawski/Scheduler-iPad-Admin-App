@@ -21,6 +21,8 @@ struct GroupTileView: View {
             return "compass.drawing"
         case "Special":
             return "star.fill"
+        case "Seminary":
+            return "doc.append"
         default:
             return "trash.fill"
         }

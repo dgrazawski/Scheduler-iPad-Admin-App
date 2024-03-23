@@ -11,47 +11,42 @@ import SwiftData
 struct EditScheduleView: View {
     @Bindable var schedule: ScheduleModel
     @State private var showQRSheet = false
-    @State private var showClass = false
     
     var body: some View {
-        VStack{
-            
-            if schedule.isCyclic {
-                ScheduleGroupsView(for: schedule.id)
-            } else {
+        ScrollView {
+            VStack{
+
                 HStack {
                     ScheduleGroupsView(for: schedule.id)
-                    MeetingsView(for: schedule.id)
+                    AllocationListView(for: schedule.id)
                 }
-                
-            }
-        }
-        .toolbar{
-            ToolbarItem(placement: .topBarLeading) {
-                Text("\(schedule.scheduleName) Year: \(schedule.year.rawValue)")
-                    .font(.largeTitle)
-                    .padding(.horizontal)
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                    Button("Generate QR", systemImage: "qrcode") {
-                        print("'placeholder for qr'")
-                        showQRSheet.toggle()
-                    }
+                .frame(minHeight: 500)
+                    Divider()
+                    DisplayWeekPlanView()
                 
                 
+
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Add classes", systemImage: "plus") {
-                    showClass.toggle()
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("\(schedule.scheduleName) Year: \(schedule.year.rawValue)")
+                        .font(.largeTitle)
+                        .padding(.horizontal)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                        Button("Generate QR", systemImage: "qrcode") {
+                            print("'placeholder for qr'")
+                            showQRSheet.toggle()
+                        }
+                    
+                    
                 }
             }
+            .sheet(isPresented: $showQRSheet, content: {
+                GeneratedQRView(scheduleName: schedule.scheduleName, scheduleYear: schedule.year.rawValue, stringToGenerateCode: schedule.id.uuidString)
+            })
+            
         }
-        .sheet(isPresented: $showQRSheet, content: {
-            GeneratedQRView(scheduleName: schedule.scheduleName, scheduleYear: schedule.year.rawValue, stringToGenerateCode: schedule.id.uuidString)
-        })
-        .sheet(isPresented: $showClass, content: {
-            AddAllocationView()
-        })
     }
 }
 
@@ -59,6 +54,6 @@ struct EditScheduleView: View {
     
     NavigationStack {
         EditScheduleView(schedule: ScheduleModel(scheduleName: "Informatyka"))
-            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self])
+            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self])
     }
 }

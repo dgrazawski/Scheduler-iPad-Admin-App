@@ -11,14 +11,12 @@ import SwiftData
 @Model
 final class MeetingModel: Identifiable {
     var id: UUID
-    var scheduleID: UUID
     var startDate: Date
     var endDate: Date
     var dateSpan: [Date]
     
-    init(id: UUID = UUID(), scheduleID: UUID = UUID(), startDate: Date = Date(), endDate: Date = Date(), dateSpan: [Date] = []) {
+    init(id: UUID = UUID(), startDate: Date = Date(), endDate: Date = Date(), dateSpan: [Date] = []) {
         self.id = id
-        self.scheduleID = scheduleID
         self.startDate = startDate
         self.endDate = endDate
         self.dateSpan = dateSpan

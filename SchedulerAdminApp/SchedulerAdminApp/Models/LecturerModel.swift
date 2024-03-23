@@ -35,6 +35,19 @@ final class LecturerModel: Identifiable {
         case habilitated
         case professor
         
+        var stringValue: String {
+            switch(self){
+            
+            case .master:
+                return "Master"
+            case .doctor:
+                return "Doctor"
+            case .habilitated:
+                return "Habilitated Doctor"
+            case .professor:
+                return "Professor"
+            }
+        }
         var localizedName:LocalizedStringKey{
             switch(self){
             

@@ -1,35 +1,37 @@
 //
-//  AddAllocationView.swift
+//  EditAllocationView.swift
 //  SchedulerAdminApp
 //
-//  Created by Dawid Grazawski on 17/02/2024.
+//  Created by Dawid Grazawski on 19/03/2024.
 //
 
 import SwiftUI
 import SwiftData
 
-struct AddAllocationView: View {
+struct EditAllocationView: View {
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
+    
+    @Bindable var allocationItem: AllocationModel
+    var scheduleID: UUID
+    
     @Query private var subjects: [SubjectModel]
     @Query private var lecturers: [LecturerModel]
     @Query private var groups: [GroupModel]
     @Query private var rooms: [RoomModel]
-    var scheduleID: UUID
-    @State private var allocationItem: AllocationModel = AllocationModel()
+    
     @State private var lecturer: LecturerModel?
     @State private var subject: SubjectModel?
     @State private var group: GroupModel?
     @State private var room: RoomModel?
-    init(scheduleID: UUID){
+    
+    init(allocationItem: AllocationModel, scheduleID: UUID) {
         self.scheduleID = scheduleID
+        self.allocationItem = allocationItem
         self._groups = Query(filter: #Predicate{
             $0.scheduleID == scheduleID
         }, sort: [SortDescriptor(\GroupModel.groupName)])
-        self._lecturer = State(initialValue: lecturers.first)
-        self._subject = State(initialValue: subjects.first)
-        self._group = State(initialValue: groups.first)
-        self._room = State(initialValue: rooms.first)
     }
     var body: some View {
         NavigationStack{
@@ -58,7 +60,7 @@ struct AddAllocationView: View {
                             .tag(Optional(room))
                     }
                 }
-                Button("Add Classes") {
+                Button("Edit Classes") {
                     allocationItem.scheduleID = scheduleID
                     allocationItem.lecturerID = lecturer?.id ?? UUID()
                     allocationItem.groupID = group?.id ?? UUID()
@@ -70,20 +72,23 @@ struct AddAllocationView: View {
                     allocationItem.subjectName = subject?.name ?? ""
                     allocationItem.roomName = room?.roomNumber ?? ""
                     
-                    context.insert(allocationItem)
-                    
                     dismiss()
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
-                    
             }
-            .navigationTitle("Add classes")
+            .navigationTitle("Edit classes")
+        }
+        .onAppear{
+            lecturer = lecturers.filter { $0.id == allocationItem.lecturerID}.first
+            subject = subjects.filter { $0.id == allocationItem.subjectID}.first
+            group = groups.filter { $0.id == allocationItem.groupID}.first
+            room = rooms.filter { $0.id == allocationItem.roomID}.first
         }
     }
 }
 
 #Preview {
-    AddAllocationView(scheduleID: UUID(uuidString: "77e417cf-d6a4-4358-994a-885841361ad4") ?? UUID())
+    EditAllocationView(allocationItem: AllocationModel(), scheduleID: UUID(uuidString: "77e417cf-d6a4-4358-994a-885841361ad4") ?? UUID())
         .modelContainer(for: [ScheduleModel.self, SubjectModel.self, LecturerModel.self, GroupModel.self, AllocationModel.self, RoomModel.self])
 }
