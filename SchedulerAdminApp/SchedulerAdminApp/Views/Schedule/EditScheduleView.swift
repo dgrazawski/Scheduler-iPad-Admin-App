@@ -22,7 +22,7 @@ struct EditScheduleView: View {
                 }
                 .frame(minHeight: 500)
                     Divider()
-                    DisplayWeekPlanView()
+                DisplayWeekPlanView(scheduleID: schedule.id)
                 
                 
 
@@ -54,6 +54,6 @@ struct EditScheduleView: View {
     
     NavigationStack {
         EditScheduleView(schedule: ScheduleModel(scheduleName: "Informatyka"))
-            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self])
+            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self, CyclicTileModel.self])
     }
 }

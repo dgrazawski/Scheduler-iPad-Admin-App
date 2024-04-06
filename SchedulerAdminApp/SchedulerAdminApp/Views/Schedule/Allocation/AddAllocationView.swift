@@ -42,9 +42,8 @@ struct AddAllocationView: View {
                 }
                 Picker("Lecturer", selection: $lecturer){
                     ForEach(lecturers){ lecturer in
-                        VStack{
-                            Text("\(lecturer.degree.stringValue) \(lecturer.lecturerName) \(lecturer.lecturerLastName)").tag(Optional(lecturer))
-                        }
+                            Text("\(lecturer.degree.stringValue) \(lecturer.lecturerName) \(lecturer.lecturerLastName)")
+                            .tag(Optional(lecturer))
                     }
                 }
                 Picker("Groups", selection: $group){
@@ -69,7 +68,7 @@ struct AddAllocationView: View {
                     allocationItem.groupType = group?.groupType.stringValue ?? ""
                     allocationItem.subjectName = subject?.name ?? ""
                     allocationItem.roomName = room?.roomNumber ?? ""
-                    
+                    print(lecturer?.degree.stringValue as Any)
                     context.insert(allocationItem)
                     
                     dismiss()

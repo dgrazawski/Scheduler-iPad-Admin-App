@@ -44,9 +44,7 @@ struct EditAllocationView: View {
                 }
                 Picker("Lecturer", selection: $lecturer){
                     ForEach(lecturers){ lecturer in
-                        VStack{
                             Text("\(lecturer.degree.stringValue) \(lecturer.lecturerName) \(lecturer.lecturerLastName)").tag(Optional(lecturer))
-                        }
                     }
                 }
                 Picker("Groups", selection: $group){

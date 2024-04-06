@@ -6,19 +6,50 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 
 
 struct DisplayWeekPlanView: View {
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var context
+    
     let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"]
-       let hoursInDay = Array(7...20) // 24-hour format
-       
+    let hoursInDay = Array(7...20)
+    var scheduleID: UUID
+    
+    @Query private var tiles: [CyclicTileModel]
+    @Query private var allocations: [AllocationModel]
+    
+    @State private var showAdd: Bool = false
+    @State private var showPopUp: Bool = false
+    @State private var tileToPop: CyclicTileModel? = nil
+//    @State private var combinedDictionary: [String:AllocationModel] = [:]
+    
+    init(scheduleID: UUID) {
+        self.scheduleID = scheduleID
+        self._tiles = Query(filter: #Predicate{
+            $0.scheduleID == scheduleID
+        })
+        self._allocations = Query(filter: #Predicate{
+            $0.scheduleID == scheduleID
+        })
 
+    }
+    
     var body: some View {
         VStack {
             HStack{
                 Text("Classes Schedule").font(.title)
+                Button("Add classes") {
+                    showAdd.toggle()
+                    
+                }
+                .foregroundColor(Color(.white))
+                    .textCase(.uppercase)
+                    .buttonStyle(.borderedProminent)
+                .padding()
                 Spacer()
                 Circle()
                     .fill(.blue.gradient)
@@ -56,14 +87,37 @@ struct DisplayWeekPlanView: View {
 
                                 Divider()
                                 HStack{
-                                    if day == "Mon" && hour == 13 {
-                                        AllocationTileView(subjectName: "Matematyka 1", lecturerName: "Dr Kowalski", groupName: "Group 1", roomNumber: "15D", groupType: "Special")
+                                    ForEach(tiles, id: \.self){ tile in
+                                        if tile.day.stringValue == day && tile.hour == hour && tile.tile != nil {
+//                                            Text("Tu co jest")
+                                            AllocationTileView(subjectName: tile.tile?.subjectName ?? "", lecturerName: tile.tile?.lecturerName ?? "", groupName: tile.tile?.groupName ?? "", roomNumber: tile.tile?.roomName ?? "", groupType: tile.tile?.groupType ?? "")
+                                                .onTapGesture {
+                                                    if tileToPop == tile {
+                                                        tileToPop = nil
+                                                    } else {
+                                                        tileToPop = tile    
+                                                    }
+                                                    
+                                                  //  showPopUp = true
+                                                    print(tileToPop?.ctID.uuidString ?? "")
+                                                    print(showPopUp)
+                                                }
+                                                .popover(isPresented: Binding<Bool>(
+                                                    get: { self.tileToPop == tile },
+                                                    set: { _ in }
+                                                )) {
+                                                    if let tileToPop = tileToPop {
+                                                        Text("siema")
+                                                    }
+                                                    
+                                                }
+                                            Button("Delete") {
+                                                context.delete(tile)
+                                            }
+                                            
+                                        }
                                     }
-                                    if day == "Wed" && hour == 7 {
-                                        AllocationTileView(subjectName: "Matematyka 1", lecturerName: "Dr Kowalski", groupName: "Group 1", roomNumber: "15D", groupType: "Exercise")
-                                    }
-                                    AllocationTileView(subjectName: "Matematyka 1", lecturerName: "Dr Kowalski", groupName: "Group 1", roomNumber: "15D", groupType: "Special")
-                                    AllocationTileView(subjectName: "Matematyka 1", lecturerName: "Dr Kowalski", groupName: "Group 1", roomNumber: "15D", groupType: "Lecture")
+
 
                                 }
                                 .frame(minHeight: 150)
@@ -75,6 +129,18 @@ struct DisplayWeekPlanView: View {
                     Divider()
                 }
             }
+//            .onAppear{
+//                combinedDictionary = Dictionary(uniqueKeysWithValues: tiles.compactMap { tile in
+//                            guard let allocation = allocations.first(where: { $0.id == tile.tileID }) else {
+//                                return nil
+//                            }
+//                    return (tile.ctID.uuidString, allocation)
+//                        })
+//                print(tiles.isEmpty)
+//            }
+            .sheet(isPresented: $showAdd) {
+                AddTileView(for: scheduleID)
+            }
         }
     }
 }
@@ -84,6 +150,7 @@ struct DisplayWeekPlanView: View {
 #Preview(traits: .landscapeLeft) {
     
     ScrollView {
-        DisplayWeekPlanView()
+        DisplayWeekPlanView(scheduleID: UUID(uuidString: "77e417cf-d6a4-4358-994a-885841361ad4") ?? UUID())
+            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self, CyclicTileModel.self])
     }
 }

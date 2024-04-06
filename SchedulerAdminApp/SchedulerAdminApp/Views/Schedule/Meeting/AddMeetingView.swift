@@ -15,16 +15,22 @@ struct AddMeetingView: View {
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
     @State private var dateRange: [Date] = []
+    private var dateManipulator: DateManipulatorService = DateManipulatorService()
     var body: some View {
         NavigationStack{
             Form{
                 DatePicker("Start Date", selection: $startDate,  displayedComponents: .date)
+                    
                 DatePicker("End Date", selection: $endDate, in: startDate...
                             ,displayedComponents: .date)
+                
                 Button("Add Meeting"){
-                    meeting.startDate = startDate
-                    meeting.endDate = endDate
+                    meeting.startDate = dateManipulator.changeStartDate(startDate: startDate)
+                    meeting.endDate = dateManipulator.changeEndDate(endDate: endDate)
                     meeting.dateSpan = meeting.countSpan(startDate: startDate, endDate: endDate)
+                    print(meeting.startDate)
+                    print(meeting.endDate)
+                    print(meeting.dateSpan)
                     context.insert(meeting)
                     dismiss()
                 }

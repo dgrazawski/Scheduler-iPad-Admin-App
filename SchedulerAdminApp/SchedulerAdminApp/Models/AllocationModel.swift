@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class AllocationModel: Identifiable {
+final class AllocationModel: Identifiable, Hashable {
     var id: UUID
     var scheduleID: UUID
     var lecturerID: UUID
