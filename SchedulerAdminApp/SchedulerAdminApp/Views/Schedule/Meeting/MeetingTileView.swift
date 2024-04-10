@@ -11,6 +11,7 @@ struct MeetingTileView: View {
     private var formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }
     var startDate: Date

@@ -28,4 +28,11 @@ class DateManipulatorService {
         components.minute = 59
         return calendar.date(from: components) ?? endDate
     }
+    
+    func setHourInDate(dateToSet: Date, hour: Int) -> Date {
+        var components = calendar.dateComponents([.year, .month, .day], from: dateToSet)
+        components.hour = hour
+        components.minute = 0
+        return calendar.date(from: components) ?? dateToSet
+    }
 }

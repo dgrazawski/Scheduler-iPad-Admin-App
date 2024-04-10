@@ -22,7 +22,12 @@ struct EditScheduleView: View {
                 }
                 .frame(minHeight: 500)
                     Divider()
-                DisplayWeekPlanView(scheduleID: schedule.id)
+                if schedule.isCyclic {
+                    DisplayCycleWeekPlanView(scheduleID: schedule.id)
+                } else {
+                    DisplayNonCycleWeekView(scheduleID: schedule.id)
+                }
+                
                 
                 
 
@@ -54,6 +59,6 @@ struct EditScheduleView: View {
     
     NavigationStack {
         EditScheduleView(schedule: ScheduleModel(scheduleName: "Informatyka"))
-            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self, CyclicTileModel.self])
+            .modelContainer(for: [ScheduleModel.self, GroupModel.self, MeetingModel.self, AllocationModel.self, CyclicTileModel.self, NonCyclicTileModel.self])
     }
 }

@@ -20,7 +20,7 @@ struct SchedulerAdminAppApp: App {
       init() {
         do {
             
-            modelContainer = try ModelContainer(for: RoomModel.self, ScheduleModel.self, SubjectModel.self, LecturerModel.self, GroupModel.self, AllocationModel.self, MeetingModel.self, CyclicTileModel.self)
+            modelContainer = try ModelContainer(for: RoomModel.self, ScheduleModel.self, SubjectModel.self, LecturerModel.self, GroupModel.self, AllocationModel.self, MeetingModel.self, CyclicTileModel.self, NonCyclicTileModel.self)
         } catch {
           fatalError("Could not initialize ModelContainer")
         }
