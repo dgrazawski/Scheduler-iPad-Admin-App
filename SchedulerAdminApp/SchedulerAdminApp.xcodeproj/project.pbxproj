@@ -23,6 +23,7 @@
 		DF3B6B122B4A248400F7BF65 /* LecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B112B4A248400F7BF65 /* LecturerView.swift */; };
 		DF3B6B142B4A2B8800F7BF65 /* AddLecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */; };
 		DF3B6B162B4B445300F7BF65 /* ScheduleTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */; };
+		DF3E41922BC984360009147C /* NoCycleAllocationPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3E41912BC984360009147C /* NoCycleAllocationPopView.swift */; };
 		DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */; };
 		DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */; };
 		DF6864932B7E572B00EA0F91 /* GroupTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864922B7E572B00EA0F91 /* GroupTileView.swift */; };
@@ -101,6 +102,7 @@
 		DF3B6B112B4A248400F7BF65 /* LecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturerView.swift; sourceTree = "<group>"; };
 		DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLecturerView.swift; sourceTree = "<group>"; };
 		DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTileView.swift; sourceTree = "<group>"; };
+		DF3E41912BC984360009147C /* NoCycleAllocationPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCycleAllocationPopView.swift; sourceTree = "<group>"; };
 		DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGroupsView.swift; sourceTree = "<group>"; };
 		DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		DF6864922B7E572B00EA0F91 /* GroupTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTileView.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				DFF5DE682BA85CA7008D7B8A /* AllocationListView.swift */,
 				DFE124722BA9F8C9003753B1 /* EditAllocationView.swift */,
 				DFE18CE32BC1F7DC00AB7E21 /* AllocationPopView.swift */,
+				DF3E41912BC984360009147C /* NoCycleAllocationPopView.swift */,
 			);
 			path = Allocation;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			files = (
 				DFD72B7A2B6E7A7B00FEC849 /* StripToNumberService.swift in Sources */,
 				DF3B6B142B4A2B8800F7BF65 /* AddLecturerView.swift in Sources */,
+				DF3E41922BC984360009147C /* NoCycleAllocationPopView.swift in Sources */,
 				DFC22C7F2B8D033400A95E48 /* AllocationTileView.swift in Sources */,
 				DF2FFAE32B4F0464005C3D89 /* MainView.swift in Sources */,
 				DFC8E40D2B4C5DE80029681B /* ScheduleGridView.swift in Sources */,

@@ -20,7 +20,7 @@ struct AddNonCyclicTileView: View {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }
-    
+    private let dateManipulator: DateManipulatorService = DateManipulatorService()
     @State private var hour: Int = 8
     @State private var day: Date = Date()
     @State private var nonCyclicTile: NonCyclicTileModel = NonCyclicTileModel()
@@ -59,6 +59,13 @@ struct AddNonCyclicTileView: View {
                     }
                 }
                 Button("Add to schedule"){
+                    nonCyclicTile.scheduleID = scheduleID
+                    nonCyclicTile.meetingID = meeting?.id ?? UUID()
+                    nonCyclicTile.tile = chosedAllocation
+                    nonCyclicTile.tileID = chosedAllocation?.id ?? UUID()
+                    nonCyclicTile.day = dateManipulator.setHourInDate(dateToSet: day, hour: hour)
+                    print(displayFormatter.string(from: nonCyclicTile.day))
+                    context.insert(nonCyclicTile)
                     dismiss()
                 }
                 .foregroundColor(Color(.white))

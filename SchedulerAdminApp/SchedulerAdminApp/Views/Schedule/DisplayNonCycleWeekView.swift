@@ -13,21 +13,32 @@ struct DisplayNonCycleWeekView: View {
     @Environment(\.modelContext) var context
     
     var scheduleID: UUID
-    let hoursInDay = Array(7...20)
-    var formatter: DateFormatter {
+    private let hoursInDay = Array(7...20)
+    private var formatter: DateFormatter {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }
+    private var formatterSecond: DateFormatter {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "HH"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }
+    private var dateManipulator: DateManipulatorService = DateManipulatorService()
     @Query private var meetings: [MeetingModel]
+    @Query private var tiles: [NonCyclicTileModel]
+    @Query private var allocations: [AllocationModel]
     
     @State private var showAdd: Bool = false
     @State private var showPopUp: Bool = false
+    @State private var tileToPop: NonCyclicTileModel?
     
     init(scheduleID: UUID){
         self.scheduleID = scheduleID
-        
+        self._tiles = Query(filter: #Predicate{ $0.scheduleID == scheduleID})
+        self._allocations = Query(filter: #Predicate{ $0.scheduleID == scheduleID})
     }
     var body: some View {
         VStack{
@@ -85,6 +96,39 @@ struct DisplayNonCycleWeekView: View {
                                             Divider()
                                             HStack{
                                                 ///tu kafelki
+                                                ForEach(tiles, id: \.self){ tile in
+                                                    if tile.tile != nil && formatter.string(from: tile.day) == formatter.string(from: day){
+                                                        if Int(formatterSecond.string(from: tile.day)) == hour {
+//                                                            Text(formatter.string(from: tile.day))
+//                                                            Text(tile.tile?.lecturerName ?? "")
+                                                            AllocationTileView(subjectName: tile.tile?.subjectName ?? "", lecturerName: tile.tile?.lecturerName ?? "", groupName: tile.tile?.groupName ?? "", roomNumber: tile.tile?.roomName ?? "", groupType: tile.tile?.groupType ?? "")
+                                                                .onTapGesture {
+                                                                    if tileToPop == tile {
+                                                                        tileToPop = nil
+                                                                    } else {
+                                                                        tileToPop = tile
+                                                                    }
+                                                                }
+                                                                .popover(isPresented: Binding<Bool>(
+                                                                    get: { self.tileToPop == tile },
+                                                                    set: { _ in }
+                                                                )) {
+                                                                    if let tileToPop = tileToPop {
+                                                                      
+                                                                        NoCycleAllocationPopView(tileItem: tileToPop)
+
+                                                                    }
+                                                                }
+                                                            
+//                                                            Button("Delete"){
+//                                                                context.delete(tile)
+//                                                            }
+                                                        }
+                                                        
+                                                        
+                                                    }
+                                                    
+                                                }
                                             }
                                             .frame(minHeight: 150)
                                         }
