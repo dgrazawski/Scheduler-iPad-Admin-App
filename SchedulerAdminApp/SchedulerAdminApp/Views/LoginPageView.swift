@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginPageView: View {
+    @AppStorage("x-access-token") private var token: String?
     @Binding var loggedIn: Bool
     @Binding var savedPass: String
     @Binding var savedLog: String
@@ -20,6 +21,7 @@ struct LoginPageView: View {
         }
         return false
     }
+    @State private var showRegister: Bool = false
     
     var body: some View {
         ZStack{
@@ -45,11 +47,17 @@ struct LoginPageView: View {
                     .padding(.bottom)
                 
                 Button(action: {
-                    if login == savedLog && password == savedPass {
-                        loggedIn = true
-                    } else {
+                    token = loginUser(username: login, password: password)
+                    if token == nil {
                         wrongAlert.toggle()
+                    } else {
+                        loggedIn = true
                     }
+//                    if login == savedLog && password == savedPass {
+//                        loggedIn = true
+//                    } else {
+//                        wrongAlert.toggle()
+//                    }
                 }, label: {
                     Text("Sign In")
                 })
@@ -57,7 +65,7 @@ struct LoginPageView: View {
                 .disabled(buttonStatus)
                 .padding(.bottom)
                 Button(action: {
-                    print("placeholder sign up")
+                    showRegister.toggle()
                 }, label: {
                     Text("Sign Up for new account")
                 })
@@ -66,6 +74,9 @@ struct LoginPageView: View {
             .padding([.leading, .trailing])
             .frame(width: 500)
         }
+        .sheet(isPresented: $showRegister, content: {
+            RegisterView()
+        })
         .alert("Wrong login or password!", isPresented: $wrongAlert) {
             Button("OK", role: .cancel) {
                 password = ""
@@ -74,6 +85,32 @@ struct LoginPageView: View {
     }
 }
 
+func loginUser(username: String, password: String) -> String {
+    let url = URLRequestBuilder().createURL(route: .account, endpoint: .login)!
+    
+    let loginData = LoginData(username: username, password: password)
+    let data = try? JSONEncoder().encode(loginData)
+    let request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)!
+    var service = NetworkService(url: url, request: request)
+    var token: String = ""
+    service.proba2()
+        .decode(type: Token.self, decoder: JSONDecoder())
+        .sink { (completion) in
+            switch completion {
+            case .finished:
+                print("success")
+            case .failure(let error):
+                print("error \(error)")
+            }
+        } receiveValue: { (response) in
+              token = response.token
+        }
+        .store(in: &service.cancelable)
+    service.cancelable.removeAll()
+    
+    print(token)
+    return token
+}
 #Preview(traits: .landscapeLeft) {
     LoginPageView(loggedIn: .constant(false), savedPass: .constant("admin"), savedLog: .constant("admin"))
 }

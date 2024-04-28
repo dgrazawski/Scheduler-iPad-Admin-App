@@ -21,6 +21,7 @@ struct AddAllocationView: View {
     @State private var subject: SubjectModel?
     @State private var group: GroupModel?
     @State private var room: RoomModel?
+    @State private var showAlert: Bool = false
     init(scheduleID: UUID){
         self.scheduleID = scheduleID
         self._groups = Query(filter: #Predicate{
@@ -68,16 +69,33 @@ struct AddAllocationView: View {
                     allocationItem.groupType = group?.groupType.stringValue ?? ""
                     allocationItem.subjectName = subject?.name ?? ""
                     allocationItem.roomName = room?.roomNumber ?? ""
-                    print(lecturer?.degree.stringValue as Any)
-                    context.insert(allocationItem)
-                    
-                    dismiss()
+                    if room!.roomSize < group!.groupSize {
+                        showAlert.toggle()
+                    } else {
+                        allocationItem.room = room
+                        allocationItem.group = group
+                        allocationItem.subject = subject
+                        allocationItem.lecturer = lecturer
+                        room?.allocations.append(allocationItem)
+                        group?.allocations.append(allocationItem)
+                        subject?.allocations.append(allocationItem)
+                        lecturer?.allocations.append(allocationItem)
+                        
+                        context.insert(allocationItem)
+                        dismiss()
+                    }
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
                     
             }
             .navigationTitle("Add classes")
+            .alert("Can't create class", isPresented: $showAlert) {
+                Text("The room is to small for the group")
+                Button("OK") {
+                    
+                }
+            }
         }
     }
 }

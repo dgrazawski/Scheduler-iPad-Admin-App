@@ -13,7 +13,7 @@ struct AllocationListView: View {
     @State private var showCreate = false
     @State private var showEdit = false
     @State private var allocationToEdit: AllocationModel?
-    var scheduleID: UUID
+    let scheduleID: UUID
     @Query private var allocations: [AllocationModel]
     init(for scheduleID: UUID){
         self._allocations = Query(filter: #Predicate{
@@ -38,6 +38,7 @@ struct AllocationListView: View {
                         .swipeActions{
                             Button(role: .destructive) {
                                 withAnimation {
+                                    
                                     context.delete(allocation)
                                 }
                             } label: {

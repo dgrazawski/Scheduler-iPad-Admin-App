@@ -16,6 +16,7 @@ final class GroupModel: Identifiable {
     var groupName: String
     var groupSize: Int
     var groupType: GroupType
+    @Relationship(deleteRule: .cascade) var allocations: [AllocationModel]
     
     init(id: UUID = UUID(), scheduleID: UUID = UUID(), groupName: String = "", groupSize: Int = 0, groupType: GroupType = .lecture) {
         self.id = id
@@ -23,6 +24,7 @@ final class GroupModel: Identifiable {
         self.groupName = groupName
         self.groupSize = groupSize
         self.groupType = groupType
+        self.allocations = []
     }
     
     

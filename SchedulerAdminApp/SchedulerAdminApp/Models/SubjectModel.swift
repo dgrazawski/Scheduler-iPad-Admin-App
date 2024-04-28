@@ -16,6 +16,7 @@ final class SubjectModel: Identifiable {
     var learningYear: LearningYear
     var hours: Int
     var labHours: Int
+    @Relationship(deleteRule: .cascade) var allocations: [AllocationModel]
     
     init(id: UUID = UUID(), name: String = "", learningYear: LearningYear = .first, hours: Int = 0, labHours: Int = 0) {
         self.id = id
@@ -23,6 +24,7 @@ final class SubjectModel: Identifiable {
         self.learningYear = learningYear
         self.hours = hours
         self.labHours = labHours
+        self.allocations = []
     }
     
     enum LearningYear: Int, Hashable, CaseIterable, Codable, Comparable, Identifiable {

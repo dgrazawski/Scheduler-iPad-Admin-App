@@ -15,12 +15,14 @@ final class LecturerModel: Identifiable {
     var lecturerName: String
     var lecturerLastName: String
     var degree: Degree
+    @Relationship(deleteRule: .cascade) var allocations: [AllocationModel]
     
     init(id: UUID = UUID(), lecturerName: String = "", lecturerLastName: String = "", degree: Degree = .doctor) {
         self.id = id
         self.lecturerName = lecturerName
         self.lecturerLastName = lecturerLastName
         self.degree = degree
+        self.allocations = []
     }
     
     enum Degree: Int, Hashable, Identifiable, CaseIterable, Comparable, Codable {

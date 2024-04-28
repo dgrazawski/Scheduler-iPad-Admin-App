@@ -19,7 +19,7 @@ struct AddRoomSDView: View {
             Form{
                 TextField("Room number", text: $roomNumber)
                 TextField("Room size", text: $roomSize.value)
-                    .keyboardType(.decimalPad)
+                    .keyboardType(.numberPad)
                 
                 Button("Add Room") {
                     roomItem.roomNumber = roomNumber

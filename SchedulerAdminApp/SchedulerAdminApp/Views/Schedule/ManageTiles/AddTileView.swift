@@ -14,12 +14,17 @@ struct AddTileView: View {
     @State private var cyclicTile: CyclicTileModel = CyclicTileModel()
     @State private var chosedAllocation: AllocationModel?
     var scheduleID: UUID
+    @State private var checker = false
+    @State private var showAlert = false
     @Query private var allocations: [AllocationModel]
+    @Query private var cyclicTiles: [CyclicTileModel]
     init(for scheduleID: UUID){
         self._allocations = Query(filter: #Predicate{
             $0.scheduleID == scheduleID
         })
-        
+        self._cyclicTiles = Query(filter: #Predicate{
+            $0.scheduleID == scheduleID
+        })
         self.scheduleID = scheduleID
     }
     let hours = Array(7...20)
@@ -51,8 +56,22 @@ struct AddTileView: View {
                     cyclicTile.hour = hour
                     cyclicTile.tileID = chosedAllocation?.id ?? UUID()
                     cyclicTile.tile = chosedAllocation
-                    context.insert(cyclicTile)
-                    dismiss()
+                    
+                    for tile in cyclicTiles {
+                        if tile.tileID == cyclicTile.tileID {
+                            if tile.day == cyclicTile.day && tile.hour == cyclicTile.hour {
+                                self.checker = true
+                            }
+                        }
+                    }
+                    if checker {
+                        showAlert.toggle()
+                    } else {
+                        chosedAllocation!.cyclicTiles.append(cyclicTile)
+                        context.insert(cyclicTile)
+                        dismiss()
+                    }
+                    
                 }
                 .foregroundColor(Color(.white))
                     .textCase(.uppercase)
@@ -60,6 +79,10 @@ struct AddTileView: View {
                 
             }
             .navigationTitle("Add classes to schedule")
+            .alert("Cannot ADD", isPresented: $showAlert) {
+                Text("Classes coliding with eachother")
+                Button("OK"){}
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct LaunchScreenView: View {
     @Environment(\.dismiss) var dismiss
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -41,4 +42,5 @@ struct LaunchScreenView: View {
 
 #Preview(traits: .landscapeLeft) {
     LaunchScreenView(showSplash: .constant(true))
+        
 }

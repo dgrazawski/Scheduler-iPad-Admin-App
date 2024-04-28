@@ -21,6 +21,12 @@ final class AllocationModel: Identifiable, Hashable {
     var groupType: String
     var subjectName: String
     var roomName: String
+    var lecturer: LecturerModel?
+    var group: GroupModel?
+    var subject: SubjectModel?
+    var room: RoomModel?
+    @Relationship(deleteRule: .cascade) var cyclicTiles: [CyclicTileModel]
+    @Relationship(deleteRule: .cascade) var nonCyclicTiles: [NonCyclicTileModel]
     
     init(id: UUID = UUID(), scheduleID: UUID = UUID(), lecturerID: UUID = UUID(), groupID: UUID = UUID(), subjectID: UUID = UUID(), roomID: UUID = UUID(), lecturerName: String = "Dr Kowalski", groupName: String = "G1", groupType: String = "Special", subjectName: String = "Infa 1", roomName: String = "13D") {
         self.id = id
@@ -34,5 +40,7 @@ final class AllocationModel: Identifiable, Hashable {
         self.groupType = groupType
         self.subjectName = subjectName
         self.roomName = roomName
+        self.cyclicTiles = []
+        self.nonCyclicTiles = []
     }
 }

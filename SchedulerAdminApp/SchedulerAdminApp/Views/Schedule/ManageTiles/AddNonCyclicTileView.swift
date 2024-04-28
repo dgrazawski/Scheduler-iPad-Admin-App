@@ -65,6 +65,7 @@ struct AddNonCyclicTileView: View {
                     nonCyclicTile.tileID = chosedAllocation?.id ?? UUID()
                     nonCyclicTile.day = dateManipulator.setHourInDate(dateToSet: day, hour: hour)
                     print(displayFormatter.string(from: nonCyclicTile.day))
+                    chosedAllocation?.nonCyclicTiles.append(nonCyclicTile)
                     context.insert(nonCyclicTile)
                     dismiss()
                 }

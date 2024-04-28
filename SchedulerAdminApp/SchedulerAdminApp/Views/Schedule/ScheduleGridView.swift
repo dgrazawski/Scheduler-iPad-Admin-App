@@ -39,38 +39,32 @@ struct ScheduleGridView: View {
                             .onAppear{
                                 selectedScheduleID = nil
                             }
-                            
                                 ScheduleTileView(title: schedule.scheduleName, year: String(schedule.year.rawValue))
                                 .onTapGesture {
                                     showSheet.toggle()
                                     selectedScheduleID = schedule.id
-                                    print(selectedScheduleID?.uuidString)
                                 }
                                 .onLongPressGesture {
                                     withAnimation {
                                         showDeleteAlert.toggle()
-                                       // context.delete(schedule)
-                                        print("na longpress \(schedule.scheduleName)")
                                         chosen = schedule
-                                    
                                     }
-                                    
                                 }
                                 .alert("Usunąć plan?!", isPresented: $showDeleteAlert) {
                                             Button("Delete", role: .destructive) {
-                                                print("na alercie \(schedule.scheduleName)")
+                                                
                                                 context.delete(chosen!)
                                                 chosen = nil
                                             }
                             }
-                            
                         }
                     }
-                    
                 }.sheet(isPresented: $showAddSchedule, content: {
                     AddScheduleView()
                 })
-                
+                .sheet(isPresented: $showDeleteAlert) {
+                    ScheduleDeleteView(scheduleID: chosen?.id ?? UUID())
+                }
             }
         }
     }
