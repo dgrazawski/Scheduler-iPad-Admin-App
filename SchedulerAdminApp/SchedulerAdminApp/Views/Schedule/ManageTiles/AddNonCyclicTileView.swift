@@ -37,12 +37,14 @@ struct AddNonCyclicTileView: View {
         NavigationStack{
             Form{
                 Picker("Meeting", selection: $meeting){
+                    Text("None").tag(nil as MeetingModel?)
                     ForEach(meetings, id: \.self){ meeting in
                         Text(displayFormatter.string(from: meeting.startDate) + "-" + displayFormatter.string(from: meeting.endDate)).tag(Optional(meeting))
                     }
                 }
                 
                 Picker("Day", selection: $day){
+                    Text("None").tag(nil as Date?)
                     ForEach(meeting?.dateSpan ?? [], id: \.self){ day in
                         Text(displayFormatter.string(from: day)).tag(Optional(day))
                         
@@ -50,10 +52,11 @@ struct AddNonCyclicTileView: View {
                 }
                 Picker("Hour", selection: $hour) {
                     ForEach(hours, id: \.self){ hour in
-                        Text("\(hour):00")
+                        Text("\(hour):00").tag(hour)
                     }
                 }
                 Picker("Class", selection: $chosedAllocation) {
+                    Text("None").tag(nil as AllocationModel?)
                     ForEach(allocations) { allocation in
                         Text("\(allocation.subjectName) \(allocation.groupName) \(allocation.groupType)").tag(Optional(allocation))
                     }

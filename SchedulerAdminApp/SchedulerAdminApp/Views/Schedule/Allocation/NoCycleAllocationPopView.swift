@@ -13,7 +13,7 @@ struct NoCycleAllocationPopView: View {
     @Environment(\.modelContext) private var context
     @Bindable var tileItem: NonCyclicTileModel
     var tileColor: Color {
-        switch(tileItem.tile?.groupType) {
+        switch(tileItem.tile?.group?.groupType.stringValue) {
         case "Lecture":
             return .blue
         case "Exercise":
@@ -28,6 +28,12 @@ struct NoCycleAllocationPopView: View {
             return .yellow
         }
     }
+    var createdName: String {
+        var f: String =  tileItem.tile?.lecturer?.degree.stringValue ?? ""
+        var m: String =    tileItem.tile?.lecturer?.lecturerName ?? ""
+        var n: String = tileItem.tile?.lecturer?.lecturerLastName ?? ""
+        return [f, m, n].flatMap({$0}).joined(separator: " ")
+    }
     var body: some View {
         ZStack {
             Rectangle().fill(tileColor.gradient)
@@ -38,21 +44,21 @@ struct NoCycleAllocationPopView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
                 .padding(.horizontal)
-                Text(tileItem.tile?.subjectName ?? "")
+                Text(tileItem.tile?.subject?.name ?? "")
                     .font(.callout)
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                Text(tileItem.tile?.lecturerName ?? "")
+                Text(createdName)
                     .font(.callout)
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 HStack(alignment: .center, spacing: 5) {
-                    Text(tileItem.tile?.groupName ?? "")
+                    Text(tileItem.tile?.group?.groupName ?? "")
                     Spacer()
-                    Text(tileItem.tile?.roomName ?? "")
+                    Text(tileItem.tile?.room?.roomNumber ?? "")
                 }
                 .padding(.horizontal)
                        

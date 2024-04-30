@@ -17,6 +17,7 @@ struct EditSubjectView: View {
     @State private var year: SubjectModel.LearningYear = .first
     @State private var hours = StripToNumberService()
     @State private var labHours = StripToNumberService()
+    @State private var showAlert: Bool = false
     var body: some View {
         NavigationStack{
             Form{
@@ -35,17 +36,25 @@ struct EditSubjectView: View {
                     .keyboardType(.numberPad)
                 
                 Button("Edit Subject") {
-                    subjectItem.name = subjectName
-                    subjectItem.learningYear = year
-                    subjectItem.hours = Int(hours.value) ?? 0
-                    subjectItem.labHours = Int(labHours.value) ?? 0
+                    if subjectName.isEmpty || hours.value.isEmpty || labHours.value.isEmpty {
+                        showAlert = true
+                    } else {
+                        subjectItem.name = subjectName
+                        subjectItem.learningYear = year
+                        subjectItem.hours = Int(hours.value) ?? 0
+                        subjectItem.labHours = Int(labHours.value) ?? 0
+                        
+                        dismiss()
+                    }
                     
-                    dismiss()
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Edit Subject")
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
         .onAppear{
             subjectName = subjectItem.name

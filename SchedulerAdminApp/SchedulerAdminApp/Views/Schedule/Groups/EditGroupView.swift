@@ -15,6 +15,7 @@ struct EditGroupView: View {
     @State private var groupName: String = ""
     @State private var groupSize: StripToNumberService = StripToNumberService()
     @State private var groupType: GroupModel.GroupType = .lecture
+    @State private var showAlert: Bool = false
     var body: some View {
         NavigationStack{
             Form{
@@ -28,16 +29,24 @@ struct EditGroupView: View {
                 }
                 .pickerStyle(.menu)
                 Button("Edit Group"){
-                    groupItem.groupName = groupName
-                    groupItem.groupSize = Int(groupSize.value) ?? 0
-                    groupItem.groupType = groupType
+                    if groupName.isEmpty || groupSize.value.isEmpty {
+                        showAlert = true
+                    } else {
+                        groupItem.groupName = groupName
+                        groupItem.groupSize = Int(groupSize.value) ?? 0
+                        groupItem.groupType = groupType
+                        
+                        dismiss()
+                    }
                     
-                    dismiss()
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Edit Group")
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
         .onAppear{
             groupName = groupItem.groupName

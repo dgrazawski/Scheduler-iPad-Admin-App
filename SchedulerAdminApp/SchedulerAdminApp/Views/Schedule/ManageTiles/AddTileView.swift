@@ -42,10 +42,11 @@ struct AddTileView: View {
                 .pickerStyle(.segmented)
                 Picker("Hour", selection: $hour) {
                     ForEach(hours, id: \.self){ hour in
-                        Text("\(hour):00")
+                        Text("\(hour):00").tag(hour)
                     }
                 }
                 Picker("Class", selection: $chosedAllocation) {
+                    
                     ForEach(allocations) { allocation in
                         Text("\(allocation.subjectName) \(allocation.groupName) \(allocation.groupType)").tag(Optional(allocation))
                     }
@@ -55,7 +56,7 @@ struct AddTileView: View {
                     cyclicTile.day = day
                     cyclicTile.hour = hour
                     cyclicTile.tileID = chosedAllocation?.id ?? UUID()
-                    cyclicTile.tile = chosedAllocation
+                    
                     
                     for tile in cyclicTiles {
                         if tile.tileID == cyclicTile.tileID {
@@ -63,10 +64,12 @@ struct AddTileView: View {
                                 self.checker = true
                             }
                         }
+                        
                     }
                     if checker {
                         showAlert.toggle()
                     } else {
+                        cyclicTile.tile = chosedAllocation
                         chosedAllocation!.cyclicTiles.append(cyclicTile)
                         context.insert(cyclicTile)
                         dismiss()

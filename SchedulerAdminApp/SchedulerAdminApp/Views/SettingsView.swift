@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
     @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @Binding var isLogged: Bool
     @State private var oldPassword: String = ""
@@ -37,6 +38,7 @@ struct SettingsView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Log out"){
                         isLogged = false
+                        accessToken = nil
                     }
                     .foregroundColor(Color(.white))
                         .textCase(.uppercase)
@@ -45,6 +47,10 @@ struct SettingsView: View {
             })
         }
     }
+}
+
+func changePassword(oldPass: String, newPass: String ){
+    
 }
 
 #Preview(traits: .landscapeLeft) {

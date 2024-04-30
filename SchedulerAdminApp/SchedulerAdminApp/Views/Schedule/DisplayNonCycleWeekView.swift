@@ -101,7 +101,7 @@ struct DisplayNonCycleWeekView: View {
                                                         if Int(formatterSecond.string(from: tile.day)) == hour {
 //                                                            Text(formatter.string(from: tile.day))
 //                                                            Text(tile.tile?.lecturerName ?? "")
-                                                            AllocationTileView(subjectName: tile.tile?.subjectName ?? "", lecturerName: tile.tile?.lecturerName ?? "", groupName: tile.tile?.groupName ?? "", roomNumber: tile.tile?.roomName ?? "", groupType: tile.tile?.groupType ?? "")
+                                                            AllocationTileView(subjectName: tile.tile?.subject?.name ?? "", lecturerName: (tile.tile?.lecturer?.degree.stringValue ?? "") + " " + (tile.tile?.lecturer?.lecturerLastName ?? "") ?? "", groupName: tile.tile?.group?.groupName ?? "", roomNumber: tile.tile?.room?.roomNumber ?? "", groupType: tile.tile?.group?.groupType.stringValue ?? "")
                                                                 .onTapGesture {
                                                                     if tileToPop == tile {
                                                                         tileToPop = nil

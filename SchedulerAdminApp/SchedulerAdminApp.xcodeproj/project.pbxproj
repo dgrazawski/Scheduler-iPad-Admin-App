@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF0195FF2B2CAB9200E5DC3B /* AddRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */; };
 		DF069A612BB096F2004EBCCE /* DateManipulatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF069A602BB096F2004EBCCE /* DateManipulatorService.swift */; };
 		DF156E472BC46CA000140577 /* DisplayNonCycleWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF156E462BC46CA000140577 /* DisplayNonCycleWeekView.swift */; };
 		DF15CB502BDC77F800E3C467 /* ScheduleDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15CB4F2BDC77F800E3C467 /* ScheduleDeleteView.swift */; };
@@ -26,6 +25,7 @@
 		DF3B6B142B4A2B8800F7BF65 /* AddLecturerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */; };
 		DF3B6B162B4B445300F7BF65 /* ScheduleTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */; };
 		DF3E41922BC984360009147C /* NoCycleAllocationPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3E41912BC984360009147C /* NoCycleAllocationPopView.swift */; };
+		DF4CBA492BE147370053F722 /* EmailValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4CBA482BE147370053F722 /* EmailValidationService.swift */; };
 		DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */; };
 		DF6864912B7E4CB000EA0F91 /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */; };
 		DF6864932B7E572B00EA0F91 /* GroupTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6864922B7E572B00EA0F91 /* GroupTileView.swift */; };
@@ -59,7 +59,6 @@
 		DFEF96C02BC5937200BC5055 /* NonCyclicTileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF96BF2BC5937100BC5055 /* NonCyclicTileModel.swift */; };
 		DFEF96C22BC5A0A900BC5055 /* AddNonCyclicTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF96C12BC5A0A900BC5055 /* AddNonCyclicTileView.swift */; };
 		DFF022D42AB2562A00AEBF7F /* SchedulerAdminAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022D32AB2562A00AEBF7F /* SchedulerAdminAppApp.swift */; };
-		DFF022D62AB2562A00AEBF7F /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022D52AB2562A00AEBF7F /* RoomView.swift */; };
 		DFF022D82AB2562C00AEBF7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF022D72AB2562C00AEBF7F /* Assets.xcassets */; };
 		DFF022DB2AB2562C00AEBF7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFF022DA2AB2562C00AEBF7F /* Preview Assets.xcassets */; };
 		DFF022E52AB2562C00AEBF7F /* SchedulerAdminAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF022E42AB2562C00AEBF7F /* SchedulerAdminAppTests.swift */; };
@@ -91,7 +90,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomView.swift; sourceTree = "<group>"; };
 		DF069A602BB096F2004EBCCE /* DateManipulatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManipulatorService.swift; sourceTree = "<group>"; };
 		DF156E462BC46CA000140577 /* DisplayNonCycleWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNonCycleWeekView.swift; sourceTree = "<group>"; };
 		DF15CB4F2BDC77F800E3C467 /* ScheduleDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDeleteView.swift; sourceTree = "<group>"; };
@@ -110,6 +108,7 @@
 		DF3B6B132B4A2B8800F7BF65 /* AddLecturerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLecturerView.swift; sourceTree = "<group>"; };
 		DF3B6B152B4B445300F7BF65 /* ScheduleTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTileView.swift; sourceTree = "<group>"; };
 		DF3E41912BC984360009147C /* NoCycleAllocationPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCycleAllocationPopView.swift; sourceTree = "<group>"; };
+		DF4CBA482BE147370053F722 /* EmailValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationService.swift; sourceTree = "<group>"; };
 		DF68648E2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGroupsView.swift; sourceTree = "<group>"; };
 		DF6864902B7E4CB000EA0F91 /* AddGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		DF6864922B7E572B00EA0F91 /* GroupTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTileView.swift; sourceTree = "<group>"; };
@@ -145,7 +144,6 @@
 		DFEF96C12BC5A0A900BC5055 /* AddNonCyclicTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNonCyclicTileView.swift; sourceTree = "<group>"; };
 		DFF022D02AB2562A00AEBF7F /* SchedulerAdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchedulerAdminApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF022D32AB2562A00AEBF7F /* SchedulerAdminAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAdminAppApp.swift; sourceTree = "<group>"; };
-		DFF022D52AB2562A00AEBF7F /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		DFF022D72AB2562C00AEBF7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFF022DA2AB2562C00AEBF7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFF022E02AB2562C00AEBF7F /* SchedulerAdminAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchedulerAdminAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,10 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				DF2315E22B73DB3A005C915D /* EditRoomView.swift */,
-				DFF022D52AB2562A00AEBF7F /* RoomView.swift */,
 				DF368ECA2B6FC6FE0070E1E5 /* RoomSDView.swift */,
 				DF368ECC2B6FD7050070E1E5 /* AddRoomSDView.swift */,
-				DF0195FE2B2CAB9200E5DC3B /* AddRoomView.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -325,6 +321,7 @@
 				DF98FD032B81362F00B62710 /* ScreenshotExtension.swift */,
 				DF069A602BB096F2004EBCCE /* DateManipulatorService.swift */,
 				DFFE0AC52BD5311800212FFE /* NetworkService.swift */,
+				DF4CBA482BE147370053F722 /* EmailValidationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -529,12 +526,12 @@
 				DFF07CC52BB34469005A5043 /* CyclicTileModel.swift in Sources */,
 				DF6AB0962B86772100A5FF5C /* SettingsView.swift in Sources */,
 				DFC8E4102B4C7D940029681B /* ScheduleModel.swift in Sources */,
+				DF4CBA492BE147370053F722 /* EmailValidationService.swift in Sources */,
 				DF156E472BC46CA000140577 /* DisplayNonCycleWeekView.swift in Sources */,
 				DFFE0AC42BD50FFB00212FFE /* RegisterView.swift in Sources */,
 				DF368ECB2B6FC6FE0070E1E5 /* RoomSDView.swift in Sources */,
 				DF8818332B8510760097813F /* MeetingTileView.swift in Sources */,
 				DF98FD082B814FB100B62710 /* AllocationModel.swift in Sources */,
-				DFF022D62AB2562A00AEBF7F /* RoomView.swift in Sources */,
 				DF8818352B85162B0097813F /* AddMeetingView.swift in Sources */,
 				DF2724EB2BDD7551000920E5 /* AccountModel.swift in Sources */,
 				DF1E28B42B797F2C0062D598 /* EditLecturerView.swift in Sources */,
@@ -573,7 +570,6 @@
 				DFAB51EA2B826779009C3FD2 /* MeetingModel.swift in Sources */,
 				DFF5DE692BA85CA7008D7B8A /* AllocationListView.swift in Sources */,
 				DF68648F2B7E3D2A00EA0F91 /* ScheduleGroupsView.swift in Sources */,
-				DF0195FF2B2CAB9200E5DC3B /* AddRoomView.swift in Sources */,
 				DF3B6B0E2B49BBAE00F7BF65 /* SubjectView.swift in Sources */,
 				DFD72B7C2B6E8C3600FEC849 /* SubjectModel.swift in Sources */,
 				DF3B6B162B4B445300F7BF65 /* ScheduleTileView.swift in Sources */,

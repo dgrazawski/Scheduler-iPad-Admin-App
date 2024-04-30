@@ -14,7 +14,7 @@ struct EditRoomView: View {
     @Bindable var roomItem: RoomModel
    // @State private var roomItem = RoomModel()
     @State private var roomNumber = ""
-    
+    @State private var showAlert: Bool = false
     @ObservedObject private var roomSize = StripToNumberService()
     
     var body: some View {
@@ -23,15 +23,23 @@ struct EditRoomView: View {
                 TextField("Room number", text: $roomNumber)
                 TextField("Room size", text: $roomSize.value)
                 Button("Change room") {
-                    roomItem.roomNumber = roomNumber
-                    roomItem.roomSize = Int(roomSize.value) ?? 0
-                    dismiss()
+                    if roomNumber.isEmpty || roomSize.value.isEmpty {
+                        showAlert = true
+                    } else {
+                        roomItem.roomNumber = roomNumber
+                        roomItem.roomSize = Int(roomSize.value) ?? 0
+                        dismiss()
+                    }
+                    
                 }
                 .foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Edit Room")
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
         .onAppear{
             roomNumber = roomItem.roomNumber

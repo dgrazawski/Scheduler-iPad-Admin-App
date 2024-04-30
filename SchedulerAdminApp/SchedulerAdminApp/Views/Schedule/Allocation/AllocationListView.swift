@@ -34,7 +34,7 @@ struct AllocationListView: View {
             .padding()
             List{
                 ForEach(allocations) { allocation in
-                    AllocationListTileView(subjectName: allocation.subjectName, lecturerName: allocation.lecturerName, groupName: allocation.groupName, roomNumber: allocation.roomName, groupType: allocation.groupType)
+                    AllocationListTileView(subjectName: allocation.subject?.name ?? "", lecturerName: (allocation.lecturer?.degree.stringValue ?? "") + " " + (allocation.lecturer?.lecturerLastName ?? "") ?? "", groupName: allocation.group?.groupName ?? "", roomNumber: allocation.room?.roomNumber ?? "", groupType: allocation.group?.groupType.stringValue ?? "")
                         .swipeActions{
                             Button(role: .destructive) {
                                 withAnimation {
@@ -76,5 +76,5 @@ struct AllocationListView: View {
 
 #Preview {
     AllocationListView(for: UUID(uuidString: "77e417cf-d6a4-4358-994a-885841361ad4")!)
-        .modelContainer(for: AllocationModel.self)
+        .modelContainer(for: [ScheduleModel.self, SubjectModel.self, LecturerModel.self, GroupModel.self, AllocationModel.self, RoomModel.self])
 }

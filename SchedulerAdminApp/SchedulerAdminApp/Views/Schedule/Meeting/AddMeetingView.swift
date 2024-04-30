@@ -28,9 +28,7 @@ struct AddMeetingView: View {
                     meeting.startDate = dateManipulator.changeStartDate(startDate: startDate)
                     meeting.endDate = dateManipulator.changeEndDate(endDate: endDate)
                     meeting.dateSpan = meeting.countSpan(startDate: startDate, endDate: endDate)
-                    print(meeting.startDate)
-                    print(meeting.endDate)
-                    print(meeting.dateSpan)
+
                     context.insert(meeting)
                     dismiss()
                 }

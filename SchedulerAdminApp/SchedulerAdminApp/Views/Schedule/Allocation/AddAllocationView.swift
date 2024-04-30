@@ -27,63 +27,73 @@ struct AddAllocationView: View {
         self._groups = Query(filter: #Predicate{
             $0.scheduleID == scheduleID
         }, sort: [SortDescriptor(\GroupModel.groupName)])
-        self._lecturer = State(initialValue: lecturers.first)
-        self._subject = State(initialValue: subjects.first)
-        self._group = State(initialValue: groups.first)
-        self._room = State(initialValue: rooms.first)
+     //   self._lecturer = State(initialValue: lecturers.first)
+      //  self._subject = State(initialValue: subjects.first)
+     //   self._group = State(initialValue: groups.first)
+     //   self._room = State(initialValue: rooms.first)
     }
     var body: some View {
         NavigationStack{
             Form{
                 Picker("Subject", selection: $subject){
+                    Text("None").tag(nil as SubjectModel?)
                     ForEach(subjects){ subject in
                         Text(subject.name)
                             .tag(Optional(subject))
                     }
                 }
                 Picker("Lecturer", selection: $lecturer){
+                    Text("None").tag(nil as LecturerModel?)
                     ForEach(lecturers){ lecturer in
                             Text("\(lecturer.degree.stringValue) \(lecturer.lecturerName) \(lecturer.lecturerLastName)")
                             .tag(Optional(lecturer))
                     }
                 }
                 Picker("Groups", selection: $group){
+                    Text("None").tag(nil as GroupModel?)
                     ForEach(groups){ group in
                         Text(group.groupName + " " + group.groupType.stringValue).tag(Optional(group))
                     }
                 }
                 Picker("Rooms", selection: $room){
+                    Text("None").tag(nil as RoomModel?)
                     ForEach(rooms){ room in
                         Text(room.roomNumber + " \(room.roomSize)")
                             .tag(Optional(room))
                     }
                 }
                 Button("Add Classes") {
-                    allocationItem.scheduleID = scheduleID
-                    allocationItem.lecturerID = lecturer?.id ?? UUID()
-                    allocationItem.groupID = group?.id ?? UUID()
-                    allocationItem.subjectID = subject?.id ?? UUID()
-                    allocationItem.roomID = room?.id ?? UUID()
-                    allocationItem.lecturerName = "\(lecturer?.degree.stringValue ?? "") \(lecturer?.lecturerName ?? "") \(lecturer?.lecturerLastName ?? "")"
-                    allocationItem.groupName = group?.groupName ?? ""
-                    allocationItem.groupType = group?.groupType.stringValue ?? ""
-                    allocationItem.subjectName = subject?.name ?? ""
-                    allocationItem.roomName = room?.roomNumber ?? ""
-                    if room!.roomSize < group!.groupSize {
-                        showAlert.toggle()
+                    
+//                    allocationItem.lecturerName = "\(lecturer?.degree.stringValue ?? "") \(lecturer?.lecturerName ?? "") \(lecturer?.lecturerLastName ?? "")"
+//                    allocationItem.groupName = group?.groupName ?? ""
+//                    allocationItem.groupType = group?.groupType.stringValue ?? ""
+//                    allocationItem.subjectName = subject?.name ?? ""
+//                    allocationItem.roomName = room?.roomNumber ?? ""
+                    if room == nil || group == nil || lecturer == nil || subject == nil {
+                        showAlert = true
                     } else {
-                        allocationItem.room = room
-                        allocationItem.group = group
-                        allocationItem.subject = subject
-                        allocationItem.lecturer = lecturer
-                        room?.allocations.append(allocationItem)
-                        group?.allocations.append(allocationItem)
-                        subject?.allocations.append(allocationItem)
-                        lecturer?.allocations.append(allocationItem)
-                        
-                        context.insert(allocationItem)
-                        dismiss()
+                        allocationItem.scheduleID = scheduleID
+                        allocationItem.lecturerID = lecturer?.id ?? UUID()
+                        allocationItem.groupID = group?.id ?? UUID()
+                        allocationItem.subjectID = subject?.id ?? UUID()
+                        allocationItem.roomID = room?.id ?? UUID()
+                        if room!.roomSize < group!.groupSize {
+                            showAlert = true
+                        } else {
+                            allocationItem.room = room
+                            allocationItem.group = group
+                            allocationItem.subject = subject
+                            allocationItem.lecturer = lecturer
+                            room?.allocations.append(allocationItem)
+                            group?.allocations.append(allocationItem)
+                            subject?.allocations.append(allocationItem)
+                            lecturer?.allocations.append(allocationItem)
+                            
+                            context.insert(allocationItem)
+                            dismiss()
+                        }
                     }
+                    
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
@@ -91,7 +101,7 @@ struct AddAllocationView: View {
             }
             .navigationTitle("Add classes")
             .alert("Can't create class", isPresented: $showAlert) {
-                Text("The room is to small for the group")
+                Text("The room is to small for the group, or you did not fill all fields!")
                 Button("OK") {
                     
                 }

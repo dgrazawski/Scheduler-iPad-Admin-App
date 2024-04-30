@@ -22,18 +22,31 @@ struct RegisterView: View {
         NavigationStack{
                 Form{
                     TextField("Username", text: $userName)
+                        .autocapitalization(.none)
                     TextField("Password", text: $password)
+                        .autocapitalization(.none)
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
+                        .textContentType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .textInputAutocapitalization(.never)
                     TextField("University", text: $universityName)
+                        .autocapitalization(.none)
                     TextField("Faculty", text: $facultyName)
+                        .autocapitalization(.none)
                     Button("Register") {
-                        account.username = userName
-                        account.password = password
-                        account.email = email
-                        account.universityName = universityName
-                        account.facultyName = facultyName
-                        register(account: account)
-                        dismiss()
+                        if userName.isEmpty || password.isEmpty || email.isEmpty || !email.isValidEmail || universityName.isEmpty || facultyName.isEmpty {
+                            
+                        } else {
+                            account.username = userName
+                            account.password = password
+                            account.email = email
+                            account.universityName = universityName
+                            account.facultyName = facultyName
+                            register(account: account)
+                            dismiss()
+                        }
+                        
                     }
                     .foregroundColor(Color(.white))
                         .textCase(.uppercase)

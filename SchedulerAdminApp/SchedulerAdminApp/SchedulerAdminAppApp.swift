@@ -10,7 +10,7 @@ import SwiftData
 
 @main
 struct SchedulerAdminAppApp: App {
-    @AppStorage("x-access-token") private var token: String?
+    @AppStorage("x-access-token") private var accessToken: String?
     @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @AppStorage("login") private var login: String = "admin"
     @AppStorage("password") private var password: String = "admin"

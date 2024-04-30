@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginPageView: View {
-    @AppStorage("x-access-token") private var token: String?
+    @AppStorage("x-access-token") private var accessToken: String?
     @Binding var loggedIn: Bool
     @Binding var savedPass: String
     @Binding var savedLog: String
@@ -47,12 +47,22 @@ struct LoginPageView: View {
                     .padding(.bottom)
                 
                 Button(action: {
-                    token = loginUser(username: login, password: password)
-                    if token == nil {
-                        wrongAlert.toggle()
-                    } else {
-                        loggedIn = true
+                    loginUser(username: login, password: password) { result in
+                        switch result {
+                        case .success(let token):
+                            print("Received token: \(token)")
+                            accessToken = token
+                            loggedIn = true
+                        case .failure(let error):
+                            print("Error logging in: \(error.localizedDescription)")
+                            wrongAlert.toggle()
+                        }
                     }
+//                    if ((token?.isEmpty) != nil) {
+//                        wrongAlert.toggle()
+//                    } else {
+//                        loggedIn = true
+//                    }
 //                    if login == savedLog && password == savedPass {
 //                        loggedIn = true
 //                    } else {
@@ -85,7 +95,7 @@ struct LoginPageView: View {
     }
 }
 
-func loginUser(username: String, password: String) -> String {
+func loginUser(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
     let url = URLRequestBuilder().createURL(route: .account, endpoint: .login)!
     
     let loginData = LoginData(username: username, password: password)
@@ -101,15 +111,14 @@ func loginUser(username: String, password: String) -> String {
                 print("success")
             case .failure(let error):
                 print("error \(error)")
+                
             }
         } receiveValue: { (response) in
-              token = response.token
+            completion(.success(response.token))
         }
         .store(in: &service.cancelable)
-    service.cancelable.removeAll()
     
     print(token)
-    return token
 }
 #Preview(traits: .landscapeLeft) {
     LoginPageView(loggedIn: .constant(false), savedPass: .constant("admin"), savedLog: .constant("admin"))

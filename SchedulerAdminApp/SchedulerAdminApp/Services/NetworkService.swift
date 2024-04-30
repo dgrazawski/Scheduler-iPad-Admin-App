@@ -52,6 +52,11 @@ struct Token: Codable {
     let token: String
 }
 
+struct ChangePassword: Codable{
+    let old_pass: String
+    let new_pass: String
+}
+
 struct URLRequestBuilder {
     var baseURL: String = "127.0.0.1"
     var basePort: Int = 5000

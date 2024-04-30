@@ -14,6 +14,7 @@ struct EditMeetingView: View {
     @Bindable var meetingItem: MeetingModel
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
+    var dateManipulator: DateManipulatorService = DateManipulatorService()
     var body: some View {
         NavigationStack{
             Form{
@@ -21,8 +22,8 @@ struct EditMeetingView: View {
                 DatePicker("End Date", selection: $endDate, in: startDate...
                             ,displayedComponents: .date)
                 Button("Edit Meeting"){
-                    meetingItem.startDate = startDate
-                    meetingItem.endDate = endDate
+                    meetingItem.startDate = dateManipulator.changeStartDate(startDate: startDate)
+                    meetingItem.endDate = dateManipulator.changeEndDate(endDate: endDate)
                     meetingItem.dateSpan = meetingItem.countSpan(startDate: startDate, endDate: endDate)
                     dismiss()
                 }

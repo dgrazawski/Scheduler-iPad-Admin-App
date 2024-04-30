@@ -16,6 +16,7 @@ struct AddGroupView: View {
     @State private var groupName: String = ""
     @State private var groupSize: StripToNumberService = StripToNumberService()
     @State private var groupType: GroupModel.GroupType = .lecture
+    @State private var showAlert: Bool = false
     var body: some View {
         NavigationStack{
             Form{
@@ -29,17 +30,25 @@ struct AddGroupView: View {
                 }
                 .pickerStyle(.menu)
                 Button("Add Group"){
-                    group.scheduleID = scheduleID
-                    group.groupName = groupName
-                    group.groupSize = Int(groupSize.value) ?? 0
-                    group.groupType = groupType
-                    context.insert(group)
-                    dismiss()
+                    if groupName.isEmpty || groupSize.value.isEmpty {
+                        showAlert = true
+                    } else {
+                        group.scheduleID = scheduleID
+                        group.groupName = groupName
+                        group.groupSize = Int(groupSize.value) ?? 0
+                        group.groupType = groupType
+                        context.insert(group)
+                        dismiss()
+                    }
+                    
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Add Group")
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
         
     }

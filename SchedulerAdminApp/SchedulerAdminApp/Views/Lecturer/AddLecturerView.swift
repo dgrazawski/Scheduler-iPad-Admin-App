@@ -15,7 +15,7 @@ struct AddLecturerView: View {
     @State private var lecturerName: String = ""
     @State private var lecturerLastName: String = ""
     @State private var degree: LecturerModel.Degree = .doctor
-    
+    @State private var showAlert: Bool = false
     var body: some View {
         NavigationStack{
             Form{
@@ -29,19 +29,26 @@ struct AddLecturerView: View {
                 TextField("Lecturer's Last Name", text: $lecturerLastName)
                 
                 Button("Add Lecturer") {
-                    lecturerItem.lecturerName = lecturerName
-                    lecturerItem.lecturerLastName = lecturerLastName
-                    lecturerItem.degree = degree //!! TRzeba to zmienic
+                    if lecturerName.isEmpty || lecturerLastName.isEmpty {
+                        showAlert = true
+                    } else {
+                        lecturerItem.lecturerName = lecturerName
+                        lecturerItem.lecturerLastName = lecturerLastName
+                        lecturerItem.degree = degree //!! TRzeba to zmienic
 
-                    context.insert(lecturerItem)
+                        context.insert(lecturerItem)
 
-                    dismiss()
+                        dismiss()
+                    }
+                    
                 }.foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Add Lecturer")
-            
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
             
         }
     }

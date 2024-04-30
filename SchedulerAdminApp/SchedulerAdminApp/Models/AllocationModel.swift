@@ -28,6 +28,10 @@ final class AllocationModel: Identifiable, Hashable {
     @Relationship(deleteRule: .cascade) var cyclicTiles: [CyclicTileModel]
     @Relationship(deleteRule: .cascade) var nonCyclicTiles: [NonCyclicTileModel]
     
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+    }
+    
     init(id: UUID = UUID(), scheduleID: UUID = UUID(), lecturerID: UUID = UUID(), groupID: UUID = UUID(), subjectID: UUID = UUID(), roomID: UUID = UUID(), lecturerName: String = "Dr Kowalski", groupName: String = "G1", groupType: String = "Special", subjectName: String = "Infa 1", roomName: String = "13D") {
         self.id = id
         self.scheduleID = scheduleID

@@ -34,9 +34,13 @@ struct ScheduleDeleteView: View {
                             try context.delete(model: CyclicTileModel.self, where: #Predicate{
                                 $0.scheduleID == scheduleID
                             })
+                            try context.delete(model: ScheduleModel.self, where: #Predicate{
+                                $0.id == scheduleID
+                            })
                             } catch {
                                 fatalError(error.localizedDescription)
                             }
+                        
                         dismiss()
                     }
                 }
