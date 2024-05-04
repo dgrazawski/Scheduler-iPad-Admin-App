@@ -17,7 +17,7 @@ struct SchedulerAdminAppApp: App {
     @Environment(\.modelContext) var context
     @State private var showSplash: Bool = true
     @State private var loggedIn: Bool = false
-    @State private var firstShow: Bool = false
+    @State private var firstShow: Bool = true
     let modelContainer: ModelContainer
       init() {
         do {

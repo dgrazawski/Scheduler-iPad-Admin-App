@@ -66,9 +66,9 @@ func register(account: AccountModel) {
     print("enkoduje")
     var request: URLRequest = URLRequestBuilder().createRequest(method: .post, url: url, body: data)!
     print("stworzył requesta \(String(describing: request.url))")
-   var service = NetworkService(url: url, request: request)
-    
-    service.proba()
+   //var service = NetworkService(url: url, request: request)
+    var service = NetworkService()
+    service.proba(request: request)
     
 }
 

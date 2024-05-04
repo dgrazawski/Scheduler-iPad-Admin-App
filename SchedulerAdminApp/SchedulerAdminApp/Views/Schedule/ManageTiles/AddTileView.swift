@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddTileView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @State private var cyclicTile: CyclicTileModel = CyclicTileModel()
@@ -48,7 +50,7 @@ struct AddTileView: View {
                 Picker("Class", selection: $chosedAllocation) {
                     
                     ForEach(allocations) { allocation in
-                        Text("\(allocation.subjectName) \(allocation.groupName) \(allocation.groupType)").tag(Optional(allocation))
+                        Text("\(allocation.subject?.name ?? "") \(allocation.group?.groupName ?? "") \(allocation.group?.groupType.stringValue ?? "")").tag(Optional(allocation))
                     }
                 }
                 Button("Add to schedule"){
@@ -70,8 +72,14 @@ struct AddTileView: View {
                         showAlert.toggle()
                     } else {
                         cyclicTile.tile = chosedAllocation
-                        chosedAllocation!.cyclicTiles.append(cyclicTile)
+                        chosedAllocation?.cyclicTiles.append(cyclicTile)
                         context.insert(cyclicTile)
+                        let data = try? JSONEncoder().encode(cyclicTile)
+                        var url = URLRequestBuilder().createURL(route: .cyclic, endpoint: .add)!
+                        var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                        
                         dismiss()
                     }
                     

@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddSubjectView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @State private var subjectItem = SubjectModel()
@@ -42,6 +44,12 @@ struct AddSubjectView: View {
                         subjectItem.learningYear = year
                         subjectItem.hours = Int(hours.value) ?? 0
                         subjectItem.labHours = Int(labHours.value) ?? 0
+                        let data = try? JSONEncoder().encode(subjectItem)
+                        var url = URLRequestBuilder().createURL(route: .subject, endpoint: .add)!
+                        var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                        
                         context.insert(subjectItem)
                         dismiss()
                     }

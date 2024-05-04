@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AllocationPopView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @Bindable var tileItem: CyclicTileModel
@@ -39,6 +41,11 @@ struct AllocationPopView: View {
             Rectangle().fill(tileColor.gradient)
             VStack(alignment: .leading, spacing: 5){
                 Button("Delete", systemImage: "trash") {
+                    var url = URLRequestBuilder().createURL(route: .cyclic, endpoint: .editDelete, parameter: tileItem.ctID.uuidString)!
+                    print(url)
+                    var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
                     context.delete(tileItem)
                 }
                 .foregroundColor(.white)

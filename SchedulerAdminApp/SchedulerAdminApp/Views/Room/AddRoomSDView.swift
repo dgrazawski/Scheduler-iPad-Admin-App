@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddRoomSDView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @State private var roomItem = RoomModel()
@@ -28,9 +30,18 @@ struct AddRoomSDView: View {
                     } else {
                         roomItem.roomNumber = roomNumber
                         roomItem.roomSize = Int(roomSize.value) ?? 0
-                        context.insert(roomItem)
                         
+                        let data = try? JSONEncoder().encode(roomItem)
+                        var url = URLRequestBuilder().createURL(route: .room, endpoint: .add)!
+                        var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                        print(networkService.statusCode)
+                            
+                        context.insert(roomItem)
                         dismiss()
+                        
+                        
                     }
                     
                 }.foregroundColor(Color(.white))

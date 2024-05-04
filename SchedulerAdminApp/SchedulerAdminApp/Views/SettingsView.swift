@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage("x-access-token") private var accessToken:String?
     @AppStorage("isDarkEnabled") private var isDarkEnabled = false
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Binding var isLogged: Bool
     @State private var oldPassword: String = ""
     @State private var newPassword: String = ""
@@ -21,7 +22,17 @@ struct SettingsView: View {
                     SecureField("Old password", text: $oldPassword)
                     SecureField("New password", text: $newPassword)
                     Button(action: {
-                        print("change pass placeholder")
+                        if !oldPassword.isEmpty && !newPassword.isEmpty {
+                            print(accessToken ?? "No Token")
+                            let changeData = ChangePassword(old_pass: oldPassword, new_pass: newPassword)
+                            let data = try? JSONEncoder().encode(changeData)
+                            var url = URLRequestBuilder().createURL(route: .account, endpoint: .changePass)!
+                            var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                            request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                            networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                            
+                        }
+                        
                     }, label: {
                         Text("Change password")
                     })
@@ -33,6 +44,10 @@ struct SettingsView: View {
                 Toggle("Dark mode", isOn: $isDarkEnabled)
                 
             }
+            .alert("Fill all fields", isPresented: $networkService.showAlert) {
+                        Text(networkService.message ?? "x")
+                        Button("OK", role: .cancel) { }
+                    }
             .navigationTitle("Settings")
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -49,9 +64,6 @@ struct SettingsView: View {
     }
 }
 
-func changePassword(oldPass: String, newPass: String ){
-    
-}
 
 #Preview(traits: .landscapeLeft) {
     SettingsView(isLogged: .constant(true))

@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddNonCyclicTileView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     
@@ -26,7 +28,8 @@ struct AddNonCyclicTileView: View {
     @State private var nonCyclicTile: NonCyclicTileModel = NonCyclicTileModel()
     @State private var chosedAllocation: AllocationModel?
     @State private var meeting: MeetingModel?
-    
+    @State private var showAlert: Bool = false
+    @State private var checker: Bool = false
     @Query private var allocations: [AllocationModel]
     @Query(sort: \MeetingModel.startDate) private var meetings: [MeetingModel]
     init(scheduleID: UUID){
@@ -55,28 +58,52 @@ struct AddNonCyclicTileView: View {
                         Text("\(hour):00").tag(hour)
                     }
                 }
+
                 Picker("Class", selection: $chosedAllocation) {
-                    Text("None").tag(nil as AllocationModel?)
-                    ForEach(allocations) { allocation in
-                        Text("\(allocation.subjectName) \(allocation.groupName) \(allocation.groupType)").tag(Optional(allocation))
-                    }
-                }
+                    Text("None").tag(nil as AllocationModel?)  // Using nil directly but casted
+                            ForEach(allocations) { allocation in
+                                Text("\(allocation.subject?.name ?? "") \(allocation.group?.groupName ?? "") \(allocation.group?.groupType.stringValue ?? "")")
+                                    .tag(Optional(allocation))
+                            }
+                        }
                 Button("Add to schedule"){
-                    nonCyclicTile.scheduleID = scheduleID
-                    nonCyclicTile.meetingID = meeting?.id ?? UUID()
-                    nonCyclicTile.tile = chosedAllocation
-                    nonCyclicTile.tileID = chosedAllocation?.id ?? UUID()
-                    nonCyclicTile.day = dateManipulator.setHourInDate(dateToSet: day, hour: hour)
-                    print(displayFormatter.string(from: nonCyclicTile.day))
-                    chosedAllocation?.nonCyclicTiles.append(nonCyclicTile)
-                    context.insert(nonCyclicTile)
-                    dismiss()
+                    if chosedAllocation == nil {
+                        checker = true
+                        print("it is nil")
+                    } else {
+                        
+                        
+                    }
+                    if checker {
+                        showAlert = true
+                    } else {
+                        nonCyclicTile.scheduleID = scheduleID
+                        
+                        nonCyclicTile.meetingID = meeting?.id ?? UUID()
+                        nonCyclicTile.tile = chosedAllocation
+                        nonCyclicTile.tileID = chosedAllocation?.id ?? UUID()
+                        nonCyclicTile.day = dateManipulator.setHourInDate(dateToSet: day, hour: hour)
+                        print(displayFormatter.string(from: nonCyclicTile.day))
+                        chosedAllocation?.nonCyclicTiles.append(nonCyclicTile)
+                        context.insert(nonCyclicTile)
+                        let encoder = JSONEncoder()
+                        encoder.dateEncodingStrategy = .iso8601
+                        let data = try? encoder.encode(nonCyclicTile)
+                        var url = URLRequestBuilder().createURL(route: .nonCyclic, endpoint: .add)!
+                        var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                        dismiss()
+                    }
                 }
                 .foregroundColor(Color(.white))
                     .textCase(.uppercase)
                     .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Add classes to schedule")
+            .alert("Fill all fields", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
     }
 }

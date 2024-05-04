@@ -10,6 +10,8 @@ import SwiftData
 
 
 struct LecturerView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.modelContext) private var context
     @Query private var lecturers: [LecturerModel]
     
@@ -85,6 +87,12 @@ struct LecturerView: View {
                             for item in selectedLecturer{
                                 if let index = sortedLecturers.firstIndex(where: {$0.id == item}){
                                     oneLecturer = sortedLecturers[index]
+                                    
+                                    var url = URLRequestBuilder().createURL(route: .lecturer, endpoint: .editDelete, parameter: oneLecturer?.id.uuidString ?? "")!
+                                    print(url)
+                                    var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
                                    
                                     context.delete(oneLecturer!)
                                 }

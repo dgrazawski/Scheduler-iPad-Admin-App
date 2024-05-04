@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddMeetingView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @State private var meeting: MeetingModel = MeetingModel()
@@ -28,6 +30,13 @@ struct AddMeetingView: View {
                     meeting.startDate = dateManipulator.changeStartDate(startDate: startDate)
                     meeting.endDate = dateManipulator.changeEndDate(endDate: endDate)
                     meeting.dateSpan = meeting.countSpan(startDate: startDate, endDate: endDate)
+                    let encoder = JSONEncoder()
+                    encoder.dateEncodingStrategy = .iso8601
+                    let data = try? encoder.encode(meeting)
+                    var url = URLRequestBuilder().createURL(route: .meeting, endpoint: .add)!
+                    var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
 
                     context.insert(meeting)
                     dismiss()

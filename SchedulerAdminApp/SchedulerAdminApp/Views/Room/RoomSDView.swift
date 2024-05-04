@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct RoomSDView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.modelContext) var context
     @Query private var roomsSD: [RoomModel]
     @State private var selectedRoomSD = Set<RoomModel.ID>()
@@ -81,6 +83,12 @@ struct RoomSDView: View {
                                 for item in selectedRoomSD{
                                     if let index = sortedRooms.firstIndex(where: {$0.id == item}){
                                         oneRoom = sortedRooms[index]
+                                        
+                                        var url = URLRequestBuilder().createURL(route: .room, endpoint: .editDelete, parameter: oneRoom?.id.uuidString ?? "")!
+                                        print(url)
+                                        var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
                                        
                                         context.delete(oneRoom!)
                                     }

@@ -50,13 +50,13 @@ struct ScheduleGridView: View {
                                         chosen = schedule
                                     }
                                 }
-                                .alert("Usunąć plan?!", isPresented: $showDeleteAlert) {
-                                            Button("Delete", role: .destructive) {
-                                                
-                                                context.delete(chosen!)
-                                                chosen = nil
-                                            }
-                            }
+//                                .alert("Usunąć plan?!", isPresented: $showDeleteAlert) {
+//                                            Button("Delete", role: .destructive) {
+//                                                
+//                                                context.delete(chosen!)
+//                                                chosen = nil
+//                                            }
+//                            }
                         }
                     }
                 }.sheet(isPresented: $showAddSchedule, content: {

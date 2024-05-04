@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct AllocationListView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
+    @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @Environment(\.modelContext) var context
     @State private var showCreate = false
     @State private var showEdit = false
@@ -38,7 +41,11 @@ struct AllocationListView: View {
                         .swipeActions{
                             Button(role: .destructive) {
                                 withAnimation {
-                                    
+                                    var url = URLRequestBuilder().createURL(route: .allocation, endpoint: .editDelete, parameter: allocation.id.uuidString)!
+                                    print(url)
+                                    var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
                                     context.delete(allocation)
                                 }
                             } label: {
@@ -54,7 +61,7 @@ struct AllocationListView: View {
                         }
                 }
             }
-            .background(.white)
+            .background(isDarkEnabled ? .black : .white)
             .scrollContentBackground(.hidden)
             .overlay{
                 if allocations.isEmpty {

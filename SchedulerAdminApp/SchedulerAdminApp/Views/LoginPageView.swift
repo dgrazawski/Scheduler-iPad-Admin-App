@@ -12,11 +12,11 @@ struct LoginPageView: View {
     @Binding var loggedIn: Bool
     @Binding var savedPass: String
     @Binding var savedLog: String
-    @State private var login: String = "admin"
-    @State private var password: String = "admin"
+    @State private var login: String = "przyklad3"
+    @State private var password: String = "password"
     @State private var wrongAlert: Bool = false
     private var buttonStatus: Bool {
-        if login.count < 4 || password.count < 4 {
+        if login.count < 4 || password.count < 3 {
             return true
         }
         return false
@@ -101,9 +101,10 @@ func loginUser(username: String, password: String, completion: @escaping (Result
     let loginData = LoginData(username: username, password: password)
     let data = try? JSONEncoder().encode(loginData)
     let request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)!
-    var service = NetworkService(url: url, request: request)
+//    var service = NetworkService(url: url, request: request)
+    var service = NetworkService()
     var token: String = ""
-    service.proba2()
+    service.proba2(request: request)
         .decode(type: Token.self, decoder: JSONDecoder())
         .sink { (completion) in
             switch completion {
@@ -116,7 +117,7 @@ func loginUser(username: String, password: String, completion: @escaping (Result
         } receiveValue: { (response) in
             completion(.success(response.token))
         }
-        .store(in: &service.cancelable)
+        .store(in: &service.cancellables)
     
     print(token)
 }

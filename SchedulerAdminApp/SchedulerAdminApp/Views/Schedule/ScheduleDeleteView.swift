@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ScheduleDeleteView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) var context
     let scheduleID: UUID
@@ -21,6 +23,11 @@ struct ScheduleDeleteView: View {
                         dismiss()
                     }
                     Button("YES"){
+                        var url = URLRequestBuilder().createURL(route: .schedule, endpoint: .editDelete, parameter: scheduleID.uuidString)!
+                        print(url)
+                        var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
                         do {
                             try context.delete(model: GroupModel.self, where: #Predicate{
                                 $0.scheduleID == scheduleID

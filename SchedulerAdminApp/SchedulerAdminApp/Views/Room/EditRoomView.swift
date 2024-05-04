@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct EditRoomView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @Bindable var roomItem: RoomModel
@@ -28,6 +30,13 @@ struct EditRoomView: View {
                     } else {
                         roomItem.roomNumber = roomNumber
                         roomItem.roomSize = Int(roomSize.value) ?? 0
+                        
+                        let data = try? JSONEncoder().encode(roomItem)
+                        var url = URLRequestBuilder().createURL(route: .room, endpoint: .editDelete, parameter: roomItem.id.uuidString)!
+                        print(url)
+                        var request = URLRequestBuilder().createRequest(method: .put, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
                         dismiss()
                     }
                     

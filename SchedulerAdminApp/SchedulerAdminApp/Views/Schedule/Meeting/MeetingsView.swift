@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct MeetingsView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
+    @AppStorage("isDarkEnabled") private var isDarkEnabled = false
     @Environment(\.modelContext) var context
     @State private var showCreate = false
     @State private var showEdit = false
@@ -30,6 +33,13 @@ struct MeetingsView: View {
                         .swipeActions{
                             Button(role: .destructive) {
                                 withAnimation {
+                                    var url = URLRequestBuilder().createURL(route: .meeting, endpoint: .editDelete, parameter: meeting.id.uuidString)!
+                                    print(url)
+                                    var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                                    
+                                    
                                     context.delete(meeting)
                                 }
                             } label: {
@@ -46,7 +56,7 @@ struct MeetingsView: View {
                     
                 }
             }
-            .background(.white)
+            .background(isDarkEnabled ? .black : .white)
             .scrollContentBackground(.hidden)
             .overlay{
                 if meetings.isEmpty {

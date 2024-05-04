@@ -10,6 +10,8 @@ import SwiftData
 
 
 struct SubjectView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.modelContext) var context
     @Query private var subjects: [SubjectModel]
 
@@ -94,6 +96,12 @@ struct SubjectView: View {
                             for item in selectedSubject{
                                 if let index = sortedSubjects.firstIndex(where: {$0.id == item}){
                                     oneSubject = sortedSubjects[index]
+                                    
+                                    var url = URLRequestBuilder().createURL(route: .subject, endpoint: .editDelete, parameter: oneSubject?.id.uuidString ?? "")!
+                                    print(url)
+                                    var request = URLRequestBuilder().createRequest(method: .delete, url: url)
+                                    request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                                    networkService.sendDataGetResponseWithCodeOnly(request: request!)
                                    
                                     context.delete(oneSubject!)
                                 }

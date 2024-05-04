@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct EditGroupView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @Bindable var groupItem: GroupModel
@@ -35,6 +37,13 @@ struct EditGroupView: View {
                         groupItem.groupName = groupName
                         groupItem.groupSize = Int(groupSize.value) ?? 0
                         groupItem.groupType = groupType
+                        
+                        let data = try? JSONEncoder().encode(groupItem)
+                        var url = URLRequestBuilder().createURL(route: .group, endpoint: .editDelete, parameter: groupItem.id.uuidString)!
+                        print(url)
+                        var request = URLRequestBuilder().createRequest(method: .put, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
                         
                         dismiss()
                     }

@@ -24,7 +24,7 @@ class DateManipulatorService {
     
     func changeEndDate(endDate: Date) -> Date {
         var components = calendar.dateComponents([.year, .month, .day], from: endDate)
-        components.hour = 23
+        components.hour = 21
         components.minute = 59
         return calendar.date(from: components) ?? endDate
     }

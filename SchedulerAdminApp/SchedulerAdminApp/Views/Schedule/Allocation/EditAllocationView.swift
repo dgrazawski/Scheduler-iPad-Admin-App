@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct EditAllocationView: View {
-    
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     
@@ -82,6 +83,22 @@ struct EditAllocationView: View {
                             allocationItem.groupID = group?.id ?? UUID()
                             allocationItem.subjectID = subject?.id ?? UUID()
                             allocationItem.roomID = room?.id ?? UUID()
+                            allocationItem.room = room
+                            allocationItem.group = group
+                            allocationItem.subject = subject
+                            allocationItem.lecturer = lecturer
+                            room?.allocations.append(allocationItem)
+                            group?.allocations.append(allocationItem)
+                            subject?.allocations.append(allocationItem)
+                            lecturer?.allocations.append(allocationItem)
+                            
+                            let data = try? JSONEncoder().encode(allocationItem)
+                            var url = URLRequestBuilder().createURL(route: .allocation, endpoint: .editDelete, parameter: allocationItem.id.uuidString)!
+                            print(url)
+                            var request = URLRequestBuilder().createRequest(method: .put, url: url, body: data)
+                            request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                            networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                            
                             dismiss()
                         }
                     }

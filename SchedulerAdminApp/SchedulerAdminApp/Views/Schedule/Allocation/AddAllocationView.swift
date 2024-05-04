@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddAllocationView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @Query private var subjects: [SubjectModel]
@@ -88,6 +90,13 @@ struct AddAllocationView: View {
                             group?.allocations.append(allocationItem)
                             subject?.allocations.append(allocationItem)
                             lecturer?.allocations.append(allocationItem)
+                            
+                            let data = try? JSONEncoder().encode(allocationItem)
+                            var url = URLRequestBuilder().createURL(route: .allocation, endpoint: .add)!
+                            var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                            request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                            networkService.sendDataGetResponseWithCodeOnly(request: request!)
+                            print(networkService.statusCode)
                             
                             context.insert(allocationItem)
                             dismiss()

@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct AddLecturerView: View {
+    @AppStorage("x-access-token") private var accessToken:String?
+    @ObservedObject private var networkService: NetworkService =  NetworkService()
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     @State private var lecturerItem = LecturerModel()
@@ -35,6 +37,12 @@ struct AddLecturerView: View {
                         lecturerItem.lecturerName = lecturerName
                         lecturerItem.lecturerLastName = lecturerLastName
                         lecturerItem.degree = degree //!! TRzeba to zmienic
+                        
+                        let data = try? JSONEncoder().encode(lecturerItem)
+                        var url = URLRequestBuilder().createURL(route: .lecturer, endpoint: .add)!
+                        var request = URLRequestBuilder().createRequest(method: .post, url: url, body: data)
+                        request?.addValue(accessToken!, forHTTPHeaderField: "x-access-token")
+                        networkService.sendDataGetResponseWithCodeOnly(request: request!)
 
                         context.insert(lecturerItem)
 
