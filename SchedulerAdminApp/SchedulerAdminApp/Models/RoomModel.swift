@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class RoomModel: Identifiable, Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var roomNumber: String
     var roomSize: Int
     @Relationship(deleteRule: .cascade) var allocations: [AllocationModel]

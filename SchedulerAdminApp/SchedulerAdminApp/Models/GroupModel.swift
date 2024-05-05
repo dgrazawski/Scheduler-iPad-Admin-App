@@ -11,7 +11,7 @@ import SwiftUI
 
 @Model
 final class GroupModel: Identifiable, Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var scheduleID: UUID
     var groupName: String
     var groupSize: Int

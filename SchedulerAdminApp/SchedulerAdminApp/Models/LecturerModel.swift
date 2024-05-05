@@ -11,7 +11,7 @@ import SwiftUI
 
 @Model
 final class LecturerModel: Identifiable, Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var lecturerName: String
     var lecturerLastName: String
     var degree: Degree

@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class MeetingModel: Identifiable, Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var startDate: Date
     var endDate: Date
     var dateSpan: [Date]

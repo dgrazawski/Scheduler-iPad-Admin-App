@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class NonCyclicTileModel: Identifiable, Codable {
-    var nctID: UUID
+    @Attribute(.unique) var nctID: UUID
     var tileID: UUID
     var scheduleID: UUID
     var meetingID: UUID

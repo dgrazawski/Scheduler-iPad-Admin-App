@@ -13,7 +13,7 @@ import SwiftUI
 
 @Model
 final class ScheduleModel: Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var scheduleName: String
     var year: Year
     var isCyclic: Bool

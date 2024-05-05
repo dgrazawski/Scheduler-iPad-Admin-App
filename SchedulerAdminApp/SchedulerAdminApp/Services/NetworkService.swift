@@ -106,6 +106,9 @@ class NetworkService: ObservableObject {
     @Published var meetings: [MeetingModel] = []
     @Published var schedules: [ScheduleModel] = []
     @Published var groups: [GroupModel] = []
+    @Published var allocations: [AllocationModel] = []
+    @Published var nonCyclicTiles: [NonCyclicTileModel] = []
+    @Published var cyclicTiles: [CyclicTileModel] = []
     var decoder: JSONDecoder {
         var decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -361,6 +364,129 @@ class NetworkService: ObservableObject {
                 print("received \(decodedData.count) groups")
                 self?.groups = decodedData
                 print("saved in network: \(self?.groups.count) groups")
+                self?.statusCode = statusCode
+                completion()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getAllocations(request: URLRequest, completion: @escaping () -> Void) {
+        URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.main)
+            .tryMap { output -> (data: Data, statusCode: Int) in
+                guard let httpResponse = output.response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
+                }
+                return (data: output.data, statusCode: httpResponse.statusCode)
+            }
+            .mapError { error -> Error in
+                return error as Error
+            }
+            .flatMap { output -> AnyPublisher<([AllocationModel], Int), Error> in
+                Just(output.data)
+                    .decode(type: [AllocationModel].self, decoder: JSONDecoder())
+                    .mapError { error in
+                        return error
+                    }
+                    .map { decodedData -> ([AllocationModel], Int) in
+                        (decodedData, output.statusCode)
+                    }
+                    .eraseToAnyPublisher()
+            }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    print("Success")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    self.message = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] decodedData, statusCode in
+                print("received \(decodedData.count) allocations")
+                self?.allocations = decodedData
+                print("saved in network: \(self?.allocations.count) allocations")
+                self?.statusCode = statusCode
+                completion()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getNonCyclicTiles(request: URLRequest, completion: @escaping () -> Void) {
+        URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.main)
+            .tryMap { output -> (data: Data, statusCode: Int) in
+                guard let httpResponse = output.response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
+                }
+                return (data: output.data, statusCode: httpResponse.statusCode)
+            }
+            .mapError { error -> Error in
+                return error as Error
+            }
+            .flatMap { output -> AnyPublisher<([NonCyclicTileModel], Int), Error> in
+                Just(output.data)
+                    .decode(type: [NonCyclicTileModel].self, decoder: self.decoder)
+                    .mapError { error in
+                        return error
+                    }
+                    .map { decodedData -> ([NonCyclicTileModel], Int) in
+                        (decodedData, output.statusCode)
+                    }
+                    .eraseToAnyPublisher()
+            }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    print("Success")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    self.message = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] decodedData, statusCode in
+                print("received \(decodedData.count) non cyclic tiles")
+                self?.nonCyclicTiles = decodedData
+                print("saved in network: \(self?.nonCyclicTiles.count) non cyclic tiles")
+                self?.statusCode = statusCode
+                completion()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getCyclicTiles(request: URLRequest, completion: @escaping () -> Void) {
+        URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.main)
+            .tryMap { output -> (data: Data, statusCode: Int) in
+                guard let httpResponse = output.response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
+                }
+                return (data: output.data, statusCode: httpResponse.statusCode)
+            }
+            .mapError { error -> Error in
+                return error as Error
+            }
+            .flatMap { output -> AnyPublisher<([CyclicTileModel], Int), Error> in
+                Just(output.data)
+                    .decode(type: [CyclicTileModel].self, decoder: JSONDecoder())
+                    .mapError { error in
+                        return error
+                    }
+                    .map { decodedData -> ([CyclicTileModel], Int) in
+                        (decodedData, output.statusCode)
+                    }
+                    .eraseToAnyPublisher()
+            }
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    print("Success")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    self.message = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] decodedData, statusCode in
+                print("received \(decodedData.count) cyclic tiles")
+                self?.cyclicTiles = decodedData
+                print("saved in network: \(self?.cyclicTiles.count) cyclic tiles")
                 self?.statusCode = statusCode
                 completion()
             })

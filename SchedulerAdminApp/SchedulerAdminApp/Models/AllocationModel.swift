@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class AllocationModel: Identifiable, Hashable, Codable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var scheduleID: UUID
     var lecturerID: UUID
     var groupID: UUID

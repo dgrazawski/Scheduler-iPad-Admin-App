@@ -11,7 +11,7 @@ import SwiftUI
 
 @Model
 final class CyclicTileModel: Identifiable, Hashable, Codable {
-    var ctID: UUID
+    @Attribute(.unique) var ctID: UUID
     var tileID: UUID
     var scheduleID: UUID
     var day: SDay
