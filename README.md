@@ -20,6 +20,8 @@ Things done:\
 -Schedule Displaying Page\
 -Network layer in Combine
 
+To make the project work you need to change the Api adress in NetworkService file.
+
 
 
 
